@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expediente Clínico - Sveltta Vacu Center</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-purple-50 text-gray-800 font-sans pb-10">
+
+    <div class="max-w-5xl mx-auto py-10 px-4 sm:px-6 lg:px-8">
+        
+        <!-- Encabezado (Sin logo) -->
+        <div class="text-center mb-10 flex flex-col items-center">
+            <p class="text-sm text-purple-700 mt-2 font-semibold tracking-widest">NOM-004-SSA3-2012</p>
+            <h1 class="text-3xl font-bold tracking-wide text-purple-900 mt-2">EXPEDIENTE CLÍNICO SVELTTA</h1>
+        </div>
+
+        <form class="bg-white shadow-2xl rounded-2xl overflow-hidden border border-purple-100">
+            
+            <!-- SECCIÓN: Datos Generales -->
+            <div class="p-8 border-b border-purple-100">
+                <h2 class="text-xl font-bold mb-6 text-purple-800 border-b-2 border-pink-500 pb-2 inline-block">Datos Generales</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Fecha:</label>
+                        <input type="date" class="w-full border-gray-300 rounded-lg shadow-sm focus:ring-pink-500 focus:border-pink-500 p-2 border">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Asesora:</label>
+                        <input type="text" class="w-full border-gray-300 rounded-lg shadow-sm focus:ring-pink-500 focus:border-pink-500 p-2 border">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-3">¿Cómo nos conoció?</label>
+                        <div class="grid grid-cols-2 gap-2 text-sm">
+                            <label class="flex items-center"><input type="checkbox" class="text-pink-600 focus:ring-pink-500 mr-2 rounded"> Facebook</label>
+                            <label class="flex items-center"><input type="checkbox" class="text-pink-600 focus:ring-pink-500 mr-2 rounded"> Instagram</label>
+                            <label class="flex items-center"><input type="checkbox" class="text-pink-600 focus:ring-pink-500 mr-2 rounded"> Tik Tok</label>
+                            <label class="flex items-center"><input type="checkbox" class="text-pink-600 focus:ring-pink-500 mr-2 rounded"> Google</label>
+                            <label class="flex items-center"><input type="checkbox" class="text-pink-600 focus:ring-pink-500 mr-2 rounded"> Recomendación</label>
+                            <label class="flex items-center"><input type="checkbox" class="text-pink-600 focus:ring-pink-500 mr-2 rounded"> Otro</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="md:col-span-2">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Nombre completo:</label>
+                        <input type="text" class="w-full border-gray-300 rounded-lg shadow-sm focus:ring-pink-500 focus:border-pink-500 p-2 border">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Fecha de nacimiento:</label>
+                        <input type="date" class="w-full border-gray-300 rounded-lg shadow-sm focus:ring-pink-500 focus:border-pink-500 p-2 border">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Edad:</label>
+                        <input type="number" class="w-full border-gray-300 rounded-lg shadow-sm focus:ring-pink-500 focus:border-pink-500 p-2 border">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Teléfono:</label>
+                        <input type="tel" class="w-full border-gray-300 rounded-lg shadow-sm focus:ring-pink-500 focus:border-pink-500 p-2 border">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Correo:</label>
+                        <input type="email" class="w-full border-gray-300 rounded-lg shadow-sm focus:ring-pink-500 focus:border-pink-500 p-2 border">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Ocupación:</label>
+                        <input type="text" class="w-full border-gray-300 rounded-lg shadow-sm focus:ring-pink-500 focus:border-pink-500 p-2 border">
+                    </div>
+                    <div class="grid grid-cols-2 gap-4 md:col-span-2">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Contacto de emergencia:</label>
+                            <input type="text" class="w-full border-gray-300 rounded-lg shadow-sm focus:ring-pink-500 focus:border-pink-500 p-2 border">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Teléfono de emergencia:</label>
+                            <input type="tel" class="w-full border-gray-300 rounded-lg shadow-sm focus:ring-pink-500 focus:border-pink-500 p-2 border">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECCIÓN: Objetivos -->
+            <div class="p-8 border-b border-purple-100 bg-purple-50/30">
+                <h2 class="text-xl font-bold mb-6 text-purple-800 border-b-2 border-pink-500 pb-2 inline-block">Objetivos</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 text-sm text-gray-700">
+                    <label class="flex items-center p-2 bg-white rounded-lg border hover:border-pink-300 cursor-pointer"><input type="checkbox" class="text-pink-600 focus:ring-pink-500 mr-2 rounded"> Bajar de peso</label>
+                    <label class="flex items-center p-2 bg-white rounded-lg border hover:border-pink-300 cursor-pointer"><input type="checkbox" class="text-pink-600 focus:ring-pink-500 mr-2 rounded"> Tonificar</label>
+                    <label class="flex items-center p-2 bg-white rounded-lg border hover:border-pink-300 cursor-pointer"><input type="checkbox" class="text-pink-600 focus:ring-pink-500 mr-2 rounded"> Mejorar salud</label>
+                    <label class="flex items-center p-2 bg-white rounded-lg border hover:border-pink-300 cursor-pointer"><input type="checkbox" class="text-pink-600 focus:ring-pink-500 mr-2 rounded"> Reducir grasa corporal</label>
+                    <label class="flex items-center p-2 bg-white rounded-lg border hover:border-pink-300 cursor-pointer"><input type="checkbox" class="text-pink-600 focus:ring-pink-500 mr-2 rounded"> Disminuir % de grasa</label>
+                    <label class="flex items-center p-2 bg-white rounded-lg border hover:border-pink-300 cursor-pointer"><input type="checkbox" class="text-pink-600 focus:ring-pink-500 mr-2 rounded"> Mejorar condición física</label>
+                    <label class="flex items-center p-2 bg-white rounded-lg border hover:border-pink-300 cursor-pointer"><input type="checkbox" class="text-pink-600 focus:ring-pink-500 mr-2 rounded"> Complementar otro entrenamiento</label>
+                    <label class="flex items-center p-2 bg-white rounded-lg border hover:border-pink-300 cursor-pointer"><input type="checkbox" class="text-pink-600 focus:ring-pink-500 mr-2 rounded"> Mantenerme activa</label>
+                    <div class="col-span-full mt-2 flex items-center">
+                        <label class="mr-2 text-sm text-gray-700">Otro:</label>
+                        <input type="text" class="flex-grow border-b border-gray-300 focus:border-pink-500 focus:outline-none px-2 bg-transparent">
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECCIÓN: Hábitos y Salud & Antecedentes -->
+            <div class="p-8 border-b border-purple-100">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <!-- Hábitos -->
+                    <div>
+                        <h2 class="text-xl font-bold mb-6 text-purple-800 border-b-2 border-pink-500 pb-2 inline-block">Hábitos y Salud</h2>
+                        <div class="space-y-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Agua (litros al día):</label>
+                                <div class="grid grid-cols-2 gap-2 text-sm">
+                                    <label class="flex items-center"><input type="radio" name="agua" class="text-pink-600 focus:ring-pink-500 mr-2"> Menos de 1 L</label>
+                                    <label class="flex items-center"><input type="radio" name="agua" class="text-pink-600 focus:ring-pink-500 mr-2"> 1-2 L</label>
+                                    <label class="flex items-center"><input type="radio" name="agua" class="text-pink-600 focus:ring-pink-500 mr-2"> 2-3 L</label>
+                                    <label class="flex items-center"><input type="radio" name="agua" class="text-pink-600 focus:ring-pink-500 mr-2"> Más de 3 L</label>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Sueño (horas):</label>
+                                <div class="grid grid-cols-2 gap-2 text-sm">
+                                    <label class="flex items-center"><input type="radio" name="sueno" class="text-pink-600 focus:ring-pink-500 mr-2"> Menos de 5</label>
+                                    <label class="flex items-center"><input type="radio" name="sueno" class="text-pink-600 focus:ring-pink-500 mr-2"> 5-6</label>
+                                    <label class="flex items-center"><input type="radio" name="sueno" class="text-pink-600 focus:ring-pink-500 mr-2"> 7-8</label>
+                                    <label class="flex items-center"><input type="radio" name="sueno" class="text-pink-600 focus:ring-pink-500 mr-2"> Más de 8</label>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Estrés:</label>
+                                <div class="flex space-x-4 text-sm">
+                                    <label class="flex items-center"><input type="radio" name="estres" class="text-pink-600 focus:ring-pink-500 mr-2"> Bajo</label>
+                                    <label class="flex items-center"><input type="radio" name="estres" class="text-pink-600 focus:ring-pink-500 mr-2"> Medio</label>
+                                    <label class="flex items-center"><input type="radio" name="estres" class="text-pink-600 focus:ring-pink-500 mr-2"> Alto</label>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Actividad física (Días por semana):</label>
+                                <div class="flex space-x-4 text-sm">
+                                    <label class="flex items-center"><input type="radio" name="actividad" class="text-pink-600 focus:ring-pink-500 mr-1"> 0</label>
+                                    <label class="flex items-center"><input type="radio" name="actividad" class="text-pink-600 focus:ring-pink-500 mr-1"> 1</label>
+                                    <label class="flex items-center"><input type="radio" name="actividad" class="text-pink-600 focus:ring-pink-500 mr-1"> 2</label>
+                                    <label class="flex items-center"><input type="radio" name="actividad" class="text-pink-600 focus:ring-pink-500 mr-1"> 3</label>
+                                    <label class="flex items-center"><input type="radio" name="actividad" class="text-pink-600 focus:ring-pink-500 mr-1"> 4</label>
+                                    <label class="flex items-center"><input type="radio" name="actividad" class="text-pink-600 focus:ring-pink-500 mr-1"> 5+</label>
+                                </div>
+                                <input type="text" placeholder="Tipo:" class="w-full mt-2 border-b border-gray-300 focus:border-pink-500 focus:outline-none text-sm p-1">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Antecedentes -->
+                    <div>
+                        <h2 class="text-xl font-bold mb-6 text-purple-800 border-b-2 border-pink-500 pb-2 inline-block">Antecedentes de Salud</h2>
+                        <div class="grid grid-cols-2 gap-x-2 gap-y-3 text-sm text-gray-700 mb-4">
+                            <label class="flex items-center"><input type="checkbox" class="text-pink-600 focus:ring-pink-500 mr-2 rounded"> Hipertensión</label>
+                            <label class="flex items-center"><input type="checkbox" class="text-pink-600 focus:ring-pink-500 mr-2 rounded"> Diabetes</label>
+                            <label class="flex items-center"><input type="checkbox" class="text-pink-600 focus:ring-pink-500 mr-2 rounded"> Enf. cardiovascular</label>
+                            <label class="flex items-center"><input type="checkbox" class="text-pink-600 focus:ring-pink-500 mr-2 rounded"> Asma</label>
+                            <label class="flex items-center"><input type="checkbox" class="text-pink-600 focus:ring-pink-500 mr-2 rounded"> Várices</label>
+                            <label class="flex items-center"><input type="checkbox" class="text-pink-600 focus:ring-pink-500 mr-2 rounded"> Trombosis</label>
+                            <label class="flex items-center"><input type="checkbox" class="text-pink-600 focus:ring-pink-500 mr-2 rounded"> Embarazo</label>
+                            <label class="flex items-center"><input type="checkbox" class="text-pink-600 focus:ring-pink-500 mr-2 rounded"> Lactancia</label>
+                            <label class="flex items-center"><input type="checkbox" class="text-pink-600 focus:ring-pink-500 mr-2 rounded"> Epilepsia</label>
+                            <label class="flex items-center"><input type="checkbox" class="text-pink-600 focus:ring-pink-500 mr-2 rounded"> Lesión muscular</label>
+                            <label class="flex items-center"><input type="checkbox" class="text-pink-600 focus:ring-pink-500 mr-2 rounded"> Cirugía reciente</label>
+                            <label class="flex items-center"><input type="checkbox" class="text-pink-600 focus:ring-pink-500 mr-2 rounded"> Prob. de columna</label>
+                            <label class="flex items-center"><input type="checkbox" class="text-pink-600 focus:ring-pink-500 mr-2 rounded"> Osteoporosis</label>
+                            <div class="flex items-center space-x-2">
+                                <span>Marcapasos:</span>
+                                <label><input type="radio" name="marcapasos" class="text-pink-600"> Sí</label>
+                                <label><input type="radio" name="marcapasos" class="text-pink-600"> No</label>
+                            </div>
+                        </div>
+                        <div class="space-y-3">
+                            <input type="text" placeholder="Otro:" class="w-full border-b border-gray-300 focus:border-pink-500 focus:outline-none text-sm p-1">
+                            <input type="text" placeholder="Medicamentos:" class="w-full border-b border-gray-300 focus:border-pink-500 focus:outline-none text-sm p-1">
+                            <input type="text" placeholder="Alergias:" class="w-full border-b border-gray-300 focus:border-pink-500 focus:outline-none text-sm p-1">
+                            <input type="text" placeholder="Observaciones:" class="w-full border-b border-gray-300 focus:border-pink-500 focus:outline-none text-sm p-1">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECCIÓN: Contraindicaciones -->
+            <div class="p-8 border-b border-purple-100 bg-red-50/50">
+                <h2 class="text-xl font-bold mb-2 text-red-700 border-b-2 border-red-500 pb-2 inline-block">Contraindicaciones</h2>
+                <p class="text-sm text-red-600 font-medium mb-6">Marque con una X si el paciente presenta alguna de las siguientes condiciones. ⚠️ Si marcó alguna opción, es necesario valoración médica antes de iniciar.</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                    <label class="flex items-center p-3 bg-white border border-red-200 rounded-lg cursor-pointer"><input type="checkbox" class="h-4 w-4 text-red-600 border-gray-300 rounded mr-3"> Embarazo</label>
+                    <label class="flex items-center p-3 bg-white border border-red-200 rounded-lg cursor-pointer"><input type="checkbox" class="h-4 w-4 text-red-600 border-gray-300 rounded mr-3"> Trombosis</label>
+                    <label class="flex items-center p-3 bg-white border border-red-200 rounded-lg cursor-pointer"><input type="checkbox" class="h-4 w-4 text-red-600 border-gray-300 rounded mr-3"> Problemas renales graves</label>
+                    <label class="flex items-center p-3 bg-white border border-red-200 rounded-lg cursor-pointer"><input type="checkbox" class="h-4 w-4 text-red-600 border-gray-300 rounded mr-3"> Fiebre</label>
+                    <label class="flex items-center p-3 bg-white border border-red-200 rounded-lg cursor-pointer"><input type="checkbox" class="h-4 w-4 text-red-600 border-gray-300 rounded mr-3"> Insuficiencia cardiaca</label>
+                    <label class="flex items-center p-3 bg-white border border-red-200 rounded-lg cursor-pointer"><input type="checkbox" class="h-4 w-4 text-red-600 border-gray-300 rounded mr-3"> Enfermedades autoinmunes</label>
+                    <label class="flex items-center p-3 bg-white border border-red-200 rounded-lg cursor-pointer"><input type="checkbox" class="h-4 w-4 text-red-600 border-gray-300 rounded mr-3"> Infección activa</label>
+                    <label class="flex items-center p-3 bg-white border border-red-200 rounded-lg cursor-pointer"><input type="checkbox" class="h-4 w-4 text-red-600 border-gray-300 rounded mr-3"> Hipertensión no controlada</label>
+                    <label class="flex items-center p-3 bg-white border border-red-200 rounded-lg cursor-pointer"><input type="checkbox" class="h-4 w-4 text-red-600 border-gray-300 rounded mr-3"> Uso de anticoagulantes</label>
+                    <label class="flex items-center p-3 bg-white border border-red-200 rounded-lg cursor-pointer"><input type="checkbox" class="h-4 w-4 text-red-600 border-gray-300 rounded mr-3"> Heridas abiertas</label>
+                    <label class="flex items-center p-3 bg-white border border-red-200 rounded-lg cursor-pointer"><input type="checkbox" class="h-4 w-4 text-red-600 border-gray-300 rounded mr-3"> Cáncer activo</label>
+                    <label class="flex items-center p-3 bg-white border border-red-200 rounded-lg cursor-pointer"><input type="checkbox" class="h-4 w-4 text-red-600 border-gray-300 rounded mr-3"> Otra</label>
+                </div>
+            </div>
+
+            <!-- SECCIÓN: Consentimiento y Políticas -->
+            <div class="p-8 border-b border-purple-100 bg-purple-50/30">
+                <h2 class="text-xl font-bold mb-6 text-purple-800 border-b-2 border-pink-500 pb-2 inline-block">Consentimiento y Políticas Sveltta</h2>
+                
+                <div class="space-y-6 text-sm text-gray-700 bg-white p-6 border border-purple-100 rounded-lg shadow-inner h-80 overflow-y-auto mb-6">
+                    <p class="font-bold text-purple-900 text-lg border-b pb-1 mb-2">Consentimiento Informado</p>
+                    <ul class="list-none space-y-2 mb-4">
+                        <li class="flex items-start"><span class="text-pink-500 mr-2">✓</span> Declaro que la información proporcionada es verdadera.</li>
+                        <li class="flex items-start"><span class="text-pink-500 mr-2">✓</span> Me comprometo a informar cualquier cambio en mi estado de salud.</li>
+                        <li class="flex items-start"><span class="text-pink-500 mr-2">✓</span> Comprendo que los resultados dependen de alimentación, ejercicio, descanso, metabolismo y constancia, por lo que la clínica no garantiza resultados específicos.</li>
+                    </ul>
+
+                    <p class="font-bold text-purple-900 text-lg border-b pb-1 mb-2 mt-6">Reglas generales</p>
+                    <ul class="list-disc pl-5 space-y-1 mb-4">
+                        <li>Reserva previa: es obligatorio realizar una reserva antes de utilizar los equipos, Sin excepción.</li>
+                        <li><strong>Higiene y uso de equipos:</strong> Se recomienda llegar con una toalla deportiva.</li>
+                        <li>El uso de faja personal es obligatorio para el uso de los equipos tipo Vacutherm.</li>
+                    </ul>
+
+                    <p class="font-bold text-purple-900 text-lg border-b pb-1 mb-2 mt-6">Aviso de Privacidad</p>
+                    <p>SVELTTA VACU CENTER será responsable del tratamiento de los datos personales recabados para integrar su expediente, brindar seguimiento, programar citas y cumplir obligaciones legales.</p>
+                </div>
+
+                <!-- Autorización de Fotografías -->
+                <div class="mb-6">
+                    <p class="text-sm font-bold text-purple-900 mb-3">Autorización de fotografías:</p>
+                    <div class="space-y-2">
+                        <label class="flex items-center text-sm text-gray-700 cursor-pointer">
+                            <input type="radio" name="fotos" class="text-pink-600 focus:ring-pink-500 mr-2"> Solo para seguimiento del expediente.
+                        </label>
+                        <label class="flex items-center text-sm text-gray-700 cursor-pointer">
+                            <input type="radio" name="fotos" class="text-pink-600 focus:ring-pink-500 mr-2"> También autorizo su uso con fines publicitarios.
+                        </label>
+                        <label class="flex items-center text-sm text-gray-700 cursor-pointer">
+                            <input type="radio" name="fotos" class="text-pink-600 focus:ring-pink-500 mr-2"> No autorizo.
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Firma del Cliente (Digital) -->
+                <div>
+                    <p class="text-sm font-bold text-purple-900 mb-3">Firma del cliente:</p>
+                    <!-- Aquí es donde ocurre la magia de la firma -->
+                    <div class="relative border-2 border-dashed border-purple-300 rounded-lg bg-white h-32 w-full overflow-hidden">
+                        <span id="texto-firma" class="absolute inset-0 flex items-center justify-center text-purple-300 pointer-events-none select-none font-medium">Traza aquí tu firma</span>
+                        <canvas id="firma-canvas" class="absolute inset-0 w-full h-full cursor-crosshair"></canvas>
+                    </div>
+                    
+                    <div class="mt-4 flex items-center">
+                        <input type="text" placeholder="Nombre del cliente impreso" class="w-full md:w-1/2 border-b border-gray-300 focus:outline-none focus:border-pink-500 text-sm p-2 mr-4">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botón de Envío -->
+            <div class="p-8 text-center bg-white border-t border-purple-100">
+                <button type="button" class="bg-purple-700 text-white px-10 py-4 rounded-full font-bold hover:bg-purple-800 transition shadow-lg shadow-purple-200 w-full md:w-auto text-lg tracking-wide">
+                    Guardar Expediente Clínico
+                </button>
+            </div>
+
+        </form>
+    </div>
+
+    <!-- Script de conexión y firma digital para Sveltta -->
+    <script>
+        // --- 1. CONFIGURACIÓN DE LA FIRMA DIGITAL ---
+        const canvas = document.getElementById('firma-canvas');
+        const ctx = canvas.getContext('2d');
+        const textoFirma = document.getElementById('texto-firma');
+        let dibujando = false;
+
+        function ajustarCanvas() {
+            const rect = canvas.parentElement.getBoundingClientRect();
+            canvas.width = rect.width;
+            canvas.height = rect.height;
+            ctx.lineWidth = 3;
+            ctx.lineCap = 'round';
+            ctx.strokeStyle = '#6B21A8'; // Color morado oscuro para la tinta
+        }
+        
+        ajustarCanvas();
+        window.addEventListener('resize', ajustarCanvas);
+
+        // Ocultar texto guía cuando empiezan a dibujar
+        function empezarDibujo(x, y) {
+            dibujando = true;
+            textoFirma.style.display = 'none'; // Desaparece el texto "Traza aquí tu firma"
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+        }
+
+        // Eventos para computadora (Ratón)
+        canvas.addEventListener('mousedown', (e) => empezarDibujo(e.offsetX, e.offsetY));
+        canvas.addEventListener('mousemove', (e) => {
+            if (dibujando) {
+                ctx.lineTo(e.offsetX, e.offsetY);
+                ctx.stroke();
+            }
+        });
+        canvas.addEventListener('mouseup', () => dibujando = false);
+        canvas.addEventListener('mouseout', () => dibujando = false);
+
+        // Eventos para Celular/Tablet (Dedo)
+        canvas.addEventListener('touchstart', (e) => {
+            e.preventDefault(); 
+            const touch = e.touches[0];
+            const rect = canvas.getBoundingClientRect();
+            empezarDibujo(touch.clientX - rect.left, touch.clientY - rect.top);
+        }, { passive: false });
+
+        canvas.addEventListener('touchmove', (e) => {
+            e.preventDefault();
+            if (dibujando) {
+                const touch = e.touches[0];
+                const rect = canvas.getBoundingClientRect();
+                ctx.lineTo(touch.clientX - rect.left, touch.clientY - rect.top);
+                ctx.stroke();
+            }
+        }, { passive: false });
+        canvas.addEventListener('touchend', () => dibujando = false);
+
+        // --- 2. CONFIGURACIÓN DEL BOTÓN GUARDAR ---
+        const botonGuardar = document.querySelector('button');
+
+        botonGuardar.addEventListener('click', async (evento) => {
+            evento.preventDefault(); 
+
+            // Recolectamos el nombre del segundo campo de texto
+            const camposDeTexto = document.querySelectorAll('input[type="text"]');
+            const nombrePaciente = camposDeTexto[1].value || "Paciente sin nombre";
+
+            const paqueteDatos = {
+                nombre: nombrePaciente,
+                fechaRegistro: new Date().toLocaleString()
+            };
+
+            botonGuardar.innerText = "Guardando...";
+
+            try {
+                const respuesta = await fetch('/api/guardar-expediente', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(paqueteDatos)
+                });
+
+                const resultado = await respuesta.json();
+                
+                if (resultado.estatus === "éxito") {
+                    alert("¡Listo! El expediente de " + paqueteDatos.nombre + " se guardó en Sveltta.");
+                    botonGuardar.innerText = "Guardar Expediente Clínico";
+                    
+                    // Borramos la firma para que quede limpio para la siguiente clienta
+                    ctx.clearRect(0, 0, canvas.width, canvas.height); 
+                    textoFirma.style.display = 'flex'; // Volvemos a mostrar el texto guía
+                    camposDeTexto[1].value = ''; // Limpiamos el nombre
+                }
+            } catch (error) {
+                console.error("Error:", error);
+                alert("Hubo un problema de conexión con el servidor.");
+                botonGuardar.innerText = "Guardar Expediente Clínico";
+            }
+        });
+    </script>
+</body>
+</html>
