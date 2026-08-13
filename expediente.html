@@ -3,368 +3,300 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Expediente Clínico - Sveltta Vacu Center</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Expediente Clínico y Contrato Sveltta</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #fdfbf7; color: #333; padding: 20px; }
+        .container { max-width: 900px; margin: auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 0 15px rgba(0,0,0,0.08); }
+        h1, h2, h3 { color: #5d3a7d; }
+        .section { margin-bottom: 25px; padding: 20px; border: 1px solid #e0e0e0; border-radius: 8px; background: #fff; }
+        label { display: block; margin-top: 10px; font-weight: bold; font-size: 0.95em; }
+        input[type="text"], input[type="number"], input[type="tel"], input[type="email"], input[type="date"], textarea, select { width: 100%; padding: 9px; margin-top: 5px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; font-size: 0.95em; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+        .checkbox-group { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 8px; }
+        .checkbox-group-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-top: 8px; }
+        button { background-color: #5d3a7d; color: white; padding: 14px 20px; border: none; border-radius: 5px; cursor: pointer; width: 100%; font-size: 18px; font-weight: bold; margin-top: 20px; }
+        button:hover { background-color: #4a2e63; }
+        .policies { font-size: 0.9em; background: #f9f9f9; padding: 15px; line-height: 1.5; }
+        .policies ul { padding-left: 20px; }
+        .policies li { margin-bottom: 8px; }
+        .note-box { background: #f4efe6; padding: 12px; border-left: 4px solid #5d3a7d; margin-top: 10px; border-radius: 4px; font-size: 0.9em; }
+        .warning-box { background: #fdf2f2; border-left: 4px solid #d9534f; padding: 10px; margin-top: 10px; border-radius: 4px; font-size: 0.9em; color: #a94442; }
+    </style>
 </head>
-<body class="bg-purple-50 text-gray-800 font-sans pb-10">
-
-    <div class="max-w-5xl mx-auto py-10 px-4 sm:px-6 lg:px-8">
-        
-        <!-- Encabezado (Sin logo) -->
-        <div class="text-center mb-10 flex flex-col items-center">
-            <p class="text-sm text-purple-700 mt-2 font-semibold tracking-widest">NOM-004-SSA3-2012</p>
-            <h1 class="text-3xl font-bold tracking-wide text-purple-900 mt-2">EXPEDIENTE CLÍNICO SVELTTA</h1>
-        </div>
-
-        <form class="bg-white shadow-2xl rounded-2xl overflow-hidden border border-purple-100">
+<body>
+    <div class="container">
+        <h1>SVELTTA VACU CENTER</h1>
+        <h2>Expediente Clínico y Contrato de Membresía</h2>
+        <form action="/guardar" method="POST">
             
-            <!-- SECCIÓN: Datos Generales -->
-            <div class="p-8 border-b border-purple-100">
-                <h2 class="text-xl font-bold mb-6 text-purple-800 border-b-2 border-pink-500 pb-2 inline-block">Datos Generales</h2>
+            <!-- DATOS GENERALES -->
+            <div class="section">
+                <h2>1. Datos Generales</h2>
+                <div class="grid-3">
+                    <label>Fecha: <input type="date" name="fecha"></label>
+                    <label>Edad: <input type="number" name="edad"></label>
+                    <label>Asesora: <input type="text" name="asesora"></label>
+                </div>
+                <label>Nombre completo: <input type="text" name="nombre" required></label>
+                <div class="grid-2">
+                    <label>Fecha de nacimiento: <input type="date" name="fecha_nacimiento"></label>
+                    <label>Teléfono: <input type="tel" name="telefono"></label>
+                </div>
+                <div class="grid-2">
+                    <label>Correo electrónico: <input type="email" name="correo"></label>
+                    <label>Ocupación: <input type="text" name="ocupacion"></label>
+                </div>
+                <div class="grid-2">
+                    <label>Contacto de emergencia: <input type="text" name="contacto_emergencia"></label>
+                    <label>Teléfono de emergencia: <input type="tel" name="tel_emergencia"></label>
+                </div>
+            </div>
+
+            <!-- ¿CÓMO NOS CONOCIÓ? -->
+            <div class="section">
+                <h2>¿Cómo nos conoció?</h2>
+                <div class="checkbox-group-3">
+                    <label><input type="checkbox" name="conocio" value="Facebook"> Facebook</label>
+                    <label><input type="checkbox" name="conocio" value="Instagram"> Instagram</label>
+                    <label><input type="checkbox" name="conocio" value="TikTok"> TikTok</label>
+                    <label><input type="checkbox" name="conocio" value="Google"> Google</label>
+                    <label><input type="checkbox" name="conocio" value="Recomendación"> Recomendación</label>
+                </div>
+                <label>Otro: <input type="text" name="conocio_otro"></label>
+            </div>
+
+            <!-- OBJETIVOS -->
+            <div class="section">
+                <h2>Objetivos</h2>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="objetivos" value="Bajar de peso"> Bajar de peso</label>
+                    <label><input type="checkbox" name="objetivos" value="Reducir grasa corporal"> Reducir grasa corporal</label>
+                    <label><input type="checkbox" name="objetivos" value="Tonificar"> Tonificar</label>
+                    <label><input type="checkbox" name="objetivos" value="Mejorar condición física"> Mejorar condición física</label>
+                    <label><input type="checkbox" name="objetivos" value="Mejorar salud"> Mejorar salud</label>
+                    <label><input type="checkbox" name="objetivos" value="Complementar otro entrenamiento"> Complementar otro entrenamiento</label>
+                    <label><input type="checkbox" name="objetivos" value="Disminuir % de grasa"> Disminuir % de grasa</label>
+                    <label><input type="checkbox" name="objetivos" value="Mantenerme activa"> Mantenerme activa</label>
+                </div>
+                <label>Otro: <input type="text" name="objetivo_otro"></label>
+            </div>
+
+            <!-- HÁBITOS Y SALUD -->
+            <div class="section">
+                <h2>Hábitos y Salud</h2>
+                <label>Agua (litros al día):</label>
+                <div class="checkbox-group">
+                    <label><input type="radio" name="agua" value="Menos de 1 L"> Menos de 1 L</label>
+                    <label><input type="radio" name="agua" value="1 - 2 L"> 1 - 2 L</label>
+                    <label><input type="radio" name="agua" value="2 - 3 L"> 2 - 3 L</label>
+                    <label><input type="radio" name="agua" value="Más de 3 L"> Más de 3 L</label>
+                </div>
+
+                <label>Sueño (horas):</label>
+                <div class="checkbox-group">
+                    <label><input type="radio" name="sueno" value="Menos de 5"> Menos de 5</label>
+                    <label><input type="radio" name="sueno" value="5 - 6"> 5 - 6</label>
+                    <label><input type="radio" name="sueno" value="7 - 8"> 7 - 8</label>
+                    <label><input type="radio" name="sueno" value="Más de 8"> Más de 8</label>
+                </div>
+
+                <label>Estrés:</label>
+                <div class="checkbox-group">
+                    <label><input type="radio" name="estres" value="Bajo"> Bajo</label>
+                    <label><input type="radio" name="estres" value="Medio"> Medio</label>
+                    <label><input type="radio" name="estres" value="Alto"> Alto</label>
+                </div>
+
+                <div class="grid-2">
+                    <label>Actividad física actual: 
+                        <select name="actividad_fisica">
+                            <option value="No">No</option>
+                            <option value="Sí">Sí</option>
+                        </select>
+                    </label>
+                    <label>Días por semana: 
+                        <select name="dias_actividad">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5+">5+</option>
+                        </select>
+                    </label>
+                </div>
+                <label>Tipo de actividad: <input type="text" name="tipo_actividad"></label>
+            </div>
+
+            <!-- ANTECEDENTES DE SALUD -->
+            <div class="section">
+                <h2>Antecedentes de Salud</h2>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="antecedentes" value="Hipertensión"> Hipertensión</label>
+                    <label><input type="checkbox" name="antecedentes" value="Diabetes"> Diabetes</label>
+                    <label><input type="checkbox" name="antecedentes" value="Enfermedad cardiovascular"> Enfermedad cardiovascular</label>
+                    <label><input type="checkbox" name="antecedentes" value="Asma"> Asma</label>
+                    <label><input type="checkbox" name="antecedentes" value="Várices"> Várices</label>
+                    <label><input type="checkbox" name="antecedentes" value="Trombosis"> Trombosis</label>
+                    <label><input type="checkbox" name="antecedentes" value="Embarazo"> Embarazo</label>
+                    <label><input type="checkbox" name="antecedentes" value="Lactancia"> Lactancia</label>
+                    <label><input type="checkbox" name="antecedentes" value="Epilepsia"> Epilepsia</label>
+                    <label><input type="checkbox" name="antecedentes" value="Lesión muscular"> Lesión muscular</label>
+                    <label><input type="checkbox" name="antecedentes" value="Cirugía reciente"> Cirugía reciente</label>
+                    <label><input type="checkbox" name="antecedentes" value="Problemas de columna"> Problemas de columna</label>
+                    <label><input type="checkbox" name="antecedentes" value="Osteoporosis"> Osteoporosis</label>
+                    <label><input type="checkbox" name="antecedentes" value="Marcapasos"> Marcapasos</label>
+                </div>
+                <label>Otro: <input type="text" name="antecedentes_otro"></label>
+                <label>Medicamentos actuales: <input type="text" name="medicamentos"></label>
+                <label>Alergias: <input type="text" name="alergias"></label>
+                <label>Observaciones de salud: <textarea name="obs_salud"></textarea></label>
+            </div>
+
+            <!-- CONTRAINDICACIONES -->
+            <div class="section" style="border: 1px solid #d9534f;">
+                <h2>Contraindicaciones Absolutas / Relativas</h2>
+                <p style="font-size: 0.9em; color: #666;">Marque si presenta alguna de las siguientes condiciones:</p>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="contraindicaciones" value="Embarazo"> Embarazo</label>
+                    <label><input type="checkbox" name="contraindicaciones" value="Trombosis"> Trombosis</label>
+                    <label><input type="checkbox" name="contraindicaciones" value="Problemas renales graves"> Problemas renales graves</label>
+                    <label><input type="checkbox" name="contraindicaciones" value="Fiebre"> Fiebre</label>
+                    <label><input type="checkbox" name="contraindicaciones" value="Insuficiencia cardiaca descompensada"> Insuficiencia cardiaca descompensada</label>
+                    <label><input type="checkbox" name="contraindicaciones" value="Enfermedades autoinmunes activas"> Enfermedades autoinmunes activas</label>
+                    <label><input type="checkbox" name="contraindicaciones" value="Infección activa"> Infección activa</label>
+                    <label><input type="checkbox" name="contraindicaciones" value="Hipertensión no controlada"> Hipertensión no controlada (>160/100 mmHg)</label>
+                    <label><input type="checkbox" name="contraindicaciones" value="Uso de anticoagulantes"> Uso de anticoagulantes</label>
+                    <label><input type="checkbox" name="contraindicaciones" value="Heridas abiertas"> Heridas abiertas</label>
+                    <label><input type="checkbox" name="contraindicaciones" value="Cáncer activo"> Cáncer activo (según indicación médica)</label>
+                    <label><input type="checkbox" name="contraindicaciones" value="Otra"> Otra</label>
+                </div>
+                <div class="warning-box">
+                    ⚠️ Si marcó alguna opción, es necesario valoración médica antes de iniciar.
+                </div>
+            </div>
+
+            <!-- MEDICIONES -->
+            <div class="section">
+                <h2>Mediciones Corporales</h2>
+                <div class="grid-2">
+                    <label>Peso (kg): <input type="number" step="0.1" name="peso"></label>
+                    <label>Estatura (cm): <input type="number" step="0.1" name="estatura"></label>
+                </div>
+                <div class="grid-3">
+                    <label>IMC: <input type="text" name="imc"></label>
+                    <label>% Grasa: <input type="text" name="grasa"></label>
+                    <label>% Masa muscular: <input type="text" name="masa_muscular"></label>
+                </div>
+                <div class="grid-3">
+                    <label>Grasa visceral: <input type="text" name="grasa_visceral"></label>
+                    <label>Edad metabólica: <input type="text" name="edad_metabolica"></label>
+                    <label>Cintura (cm): <input type="number" step="0.1" name="cintura"></label>
+                </div>
+                <div class="grid-3">
+                    <label>Abdomen (cm): <input type="number" step="0.1" name="abdomen"></label>
+                    <label>Cadera (cm): <input type="number" step="0.1" name="cadera"></label>
+                    <label>Brazo (cm): <input type="number" step="0.1" name="brazo"></label>
+                </div>
+                <div class="grid-2">
+                    <label>Muslo (cm): <input type="number" step="0.1" name="muslo"></label>
+                    <label>Pantorrilla (cm): <input type="number" step="0.1" name="pantorrilla"></label>
+                </div>
+                <label>Observaciones de mediciones: <textarea name="obs_mediciones"></textarea></label>
+            </div>
+
+            <!-- EXPLORACIÓN Y VALORACIÓN INICIAL -->
+            <div class="section">
+                <h2>Exploración y Valoración Inicial</h2>
+                <label>Motivo de consulta: <input type="text" name="motivo"></label>
+                <label>Diagnóstico / valoración funcional: <input type="text" name="diagnostico"></label>
+                <label>Objetivos terapéuticos: <input type="text" name="objetivos_terapeuticos"></label>
                 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Fecha:</label>
-                        <input type="date" class="w-full border-gray-300 rounded-lg shadow-sm focus:ring-pink-500 focus:border-pink-500 p-2 border">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Asesora:</label>
-                        <input type="text" class="w-full border-gray-300 rounded-lg shadow-sm focus:ring-pink-500 focus:border-pink-500 p-2 border">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-3">¿Cómo nos conoció?</label>
-                        <div class="grid grid-cols-2 gap-2 text-sm">
-                            <label class="flex items-center"><input type="checkbox" class="text-pink-600 focus:ring-pink-500 mr-2 rounded"> Facebook</label>
-                            <label class="flex items-center"><input type="checkbox" class="text-pink-600 focus:ring-pink-500 mr-2 rounded"> Instagram</label>
-                            <label class="flex items-center"><input type="checkbox" class="text-pink-600 focus:ring-pink-500 mr-2 rounded"> Tik Tok</label>
-                            <label class="flex items-center"><input type="checkbox" class="text-pink-600 focus:ring-pink-500 mr-2 rounded"> Google</label>
-                            <label class="flex items-center"><input type="checkbox" class="text-pink-600 focus:ring-pink-500 mr-2 rounded"> Recomendación</label>
-                            <label class="flex items-center"><input type="checkbox" class="text-pink-600 focus:ring-pink-500 mr-2 rounded"> Otro</label>
-                        </div>
-                    </div>
+                <label>Plan de tratamiento:</label>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="tratamiento" value="Vacucycle"> Vacucycle</label>
+                    <label><input type="checkbox" name="tratamiento" value="Vacutherm"> Vacutherm</label>
+                    <label><input type="checkbox" name="tratamiento" value="Slim Roller"> Slim Roller</label>
+                    <label><input type="checkbox" name="tratamiento" value="Combinacion de tecnologías"> Combinación de tecnologías</label>
                 </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="md:col-span-2">
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Nombre completo:</label>
-                        <input type="text" class="w-full border-gray-300 rounded-lg shadow-sm focus:ring-pink-500 focus:border-pink-500 p-2 border">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Fecha de nacimiento:</label>
-                        <input type="date" class="w-full border-gray-300 rounded-lg shadow-sm focus:ring-pink-500 focus:border-pink-500 p-2 border">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Edad:</label>
-                        <input type="number" class="w-full border-gray-300 rounded-lg shadow-sm focus:ring-pink-500 focus:border-pink-500 p-2 border">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Teléfono:</label>
-                        <input type="tel" class="w-full border-gray-300 rounded-lg shadow-sm focus:ring-pink-500 focus:border-pink-500 p-2 border">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Correo:</label>
-                        <input type="email" class="w-full border-gray-300 rounded-lg shadow-sm focus:ring-pink-500 focus:border-pink-500 p-2 border">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Ocupación:</label>
-                        <input type="text" class="w-full border-gray-300 rounded-lg shadow-sm focus:ring-pink-500 focus:border-pink-500 p-2 border">
-                    </div>
-                    <div class="grid grid-cols-2 gap-4 md:col-span-2">
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1">Contacto de emergencia:</label>
-                            <input type="text" class="w-full border-gray-300 rounded-lg shadow-sm focus:ring-pink-500 focus:border-pink-500 p-2 border">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1">Teléfono de emergencia:</label>
-                            <input type="tel" class="w-full border-gray-300 rounded-lg shadow-sm focus:ring-pink-500 focus:border-pink-500 p-2 border">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- SECCIÓN: Objetivos -->
-            <div class="p-8 border-b border-purple-100 bg-purple-50/30">
-                <h2 class="text-xl font-bold mb-6 text-purple-800 border-b-2 border-pink-500 pb-2 inline-block">Objetivos</h2>
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 text-sm text-gray-700">
-                    <label class="flex items-center p-2 bg-white rounded-lg border hover:border-pink-300 cursor-pointer"><input type="checkbox" class="text-pink-600 focus:ring-pink-500 mr-2 rounded"> Bajar de peso</label>
-                    <label class="flex items-center p-2 bg-white rounded-lg border hover:border-pink-300 cursor-pointer"><input type="checkbox" class="text-pink-600 focus:ring-pink-500 mr-2 rounded"> Tonificar</label>
-                    <label class="flex items-center p-2 bg-white rounded-lg border hover:border-pink-300 cursor-pointer"><input type="checkbox" class="text-pink-600 focus:ring-pink-500 mr-2 rounded"> Mejorar salud</label>
-                    <label class="flex items-center p-2 bg-white rounded-lg border hover:border-pink-300 cursor-pointer"><input type="checkbox" class="text-pink-600 focus:ring-pink-500 mr-2 rounded"> Reducir grasa corporal</label>
-                    <label class="flex items-center p-2 bg-white rounded-lg border hover:border-pink-300 cursor-pointer"><input type="checkbox" class="text-pink-600 focus:ring-pink-500 mr-2 rounded"> Disminuir % de grasa</label>
-                    <label class="flex items-center p-2 bg-white rounded-lg border hover:border-pink-300 cursor-pointer"><input type="checkbox" class="text-pink-600 focus:ring-pink-500 mr-2 rounded"> Mejorar condición física</label>
-                    <label class="flex items-center p-2 bg-white rounded-lg border hover:border-pink-300 cursor-pointer"><input type="checkbox" class="text-pink-600 focus:ring-pink-500 mr-2 rounded"> Complementar otro entrenamiento</label>
-                    <label class="flex items-center p-2 bg-white rounded-lg border hover:border-pink-300 cursor-pointer"><input type="checkbox" class="text-pink-600 focus:ring-pink-500 mr-2 rounded"> Mantenerme activa</label>
-                    <div class="col-span-full mt-2 flex items-center">
-                        <label class="mr-2 text-sm text-gray-700">Otro:</label>
-                        <input type="text" class="flex-grow border-b border-gray-300 focus:border-pink-500 focus:outline-none px-2 bg-transparent">
-                    </div>
-                </div>
-            </div>
-
-            <!-- SECCIÓN: Hábitos y Salud & Antecedentes -->
-            <div class="p-8 border-b border-purple-100">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                    <!-- Hábitos -->
-                    <div>
-                        <h2 class="text-xl font-bold mb-6 text-purple-800 border-b-2 border-pink-500 pb-2 inline-block">Hábitos y Salud</h2>
-                        <div class="space-y-6">
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Agua (litros al día):</label>
-                                <div class="grid grid-cols-2 gap-2 text-sm">
-                                    <label class="flex items-center"><input type="radio" name="agua" class="text-pink-600 focus:ring-pink-500 mr-2"> Menos de 1 L</label>
-                                    <label class="flex items-center"><input type="radio" name="agua" class="text-pink-600 focus:ring-pink-500 mr-2"> 1-2 L</label>
-                                    <label class="flex items-center"><input type="radio" name="agua" class="text-pink-600 focus:ring-pink-500 mr-2"> 2-3 L</label>
-                                    <label class="flex items-center"><input type="radio" name="agua" class="text-pink-600 focus:ring-pink-500 mr-2"> Más de 3 L</label>
-                                </div>
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Sueño (horas):</label>
-                                <div class="grid grid-cols-2 gap-2 text-sm">
-                                    <label class="flex items-center"><input type="radio" name="sueno" class="text-pink-600 focus:ring-pink-500 mr-2"> Menos de 5</label>
-                                    <label class="flex items-center"><input type="radio" name="sueno" class="text-pink-600 focus:ring-pink-500 mr-2"> 5-6</label>
-                                    <label class="flex items-center"><input type="radio" name="sueno" class="text-pink-600 focus:ring-pink-500 mr-2"> 7-8</label>
-                                    <label class="flex items-center"><input type="radio" name="sueno" class="text-pink-600 focus:ring-pink-500 mr-2"> Más de 8</label>
-                                </div>
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Estrés:</label>
-                                <div class="flex space-x-4 text-sm">
-                                    <label class="flex items-center"><input type="radio" name="estres" class="text-pink-600 focus:ring-pink-500 mr-2"> Bajo</label>
-                                    <label class="flex items-center"><input type="radio" name="estres" class="text-pink-600 focus:ring-pink-500 mr-2"> Medio</label>
-                                    <label class="flex items-center"><input type="radio" name="estres" class="text-pink-600 focus:ring-pink-500 mr-2"> Alto</label>
-                                </div>
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Actividad física (Días por semana):</label>
-                                <div class="flex space-x-4 text-sm">
-                                    <label class="flex items-center"><input type="radio" name="actividad" class="text-pink-600 focus:ring-pink-500 mr-1"> 0</label>
-                                    <label class="flex items-center"><input type="radio" name="actividad" class="text-pink-600 focus:ring-pink-500 mr-1"> 1</label>
-                                    <label class="flex items-center"><input type="radio" name="actividad" class="text-pink-600 focus:ring-pink-500 mr-1"> 2</label>
-                                    <label class="flex items-center"><input type="radio" name="actividad" class="text-pink-600 focus:ring-pink-500 mr-1"> 3</label>
-                                    <label class="flex items-center"><input type="radio" name="actividad" class="text-pink-600 focus:ring-pink-500 mr-1"> 4</label>
-                                    <label class="flex items-center"><input type="radio" name="actividad" class="text-pink-600 focus:ring-pink-500 mr-1"> 5+</label>
-                                </div>
-                                <input type="text" placeholder="Tipo:" class="w-full mt-2 border-b border-gray-300 focus:border-pink-500 focus:outline-none text-sm p-1">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Antecedentes -->
-                    <div>
-                        <h2 class="text-xl font-bold mb-6 text-purple-800 border-b-2 border-pink-500 pb-2 inline-block">Antecedentes de Salud</h2>
-                        <div class="grid grid-cols-2 gap-x-2 gap-y-3 text-sm text-gray-700 mb-4">
-                            <label class="flex items-center"><input type="checkbox" class="text-pink-600 focus:ring-pink-500 mr-2 rounded"> Hipertensión</label>
-                            <label class="flex items-center"><input type="checkbox" class="text-pink-600 focus:ring-pink-500 mr-2 rounded"> Diabetes</label>
-                            <label class="flex items-center"><input type="checkbox" class="text-pink-600 focus:ring-pink-500 mr-2 rounded"> Enf. cardiovascular</label>
-                            <label class="flex items-center"><input type="checkbox" class="text-pink-600 focus:ring-pink-500 mr-2 rounded"> Asma</label>
-                            <label class="flex items-center"><input type="checkbox" class="text-pink-600 focus:ring-pink-500 mr-2 rounded"> Várices</label>
-                            <label class="flex items-center"><input type="checkbox" class="text-pink-600 focus:ring-pink-500 mr-2 rounded"> Trombosis</label>
-                            <label class="flex items-center"><input type="checkbox" class="text-pink-600 focus:ring-pink-500 mr-2 rounded"> Embarazo</label>
-                            <label class="flex items-center"><input type="checkbox" class="text-pink-600 focus:ring-pink-500 mr-2 rounded"> Lactancia</label>
-                            <label class="flex items-center"><input type="checkbox" class="text-pink-600 focus:ring-pink-500 mr-2 rounded"> Epilepsia</label>
-                            <label class="flex items-center"><input type="checkbox" class="text-pink-600 focus:ring-pink-500 mr-2 rounded"> Lesión muscular</label>
-                            <label class="flex items-center"><input type="checkbox" class="text-pink-600 focus:ring-pink-500 mr-2 rounded"> Cirugía reciente</label>
-                            <label class="flex items-center"><input type="checkbox" class="text-pink-600 focus:ring-pink-500 mr-2 rounded"> Prob. de columna</label>
-                            <label class="flex items-center"><input type="checkbox" class="text-pink-600 focus:ring-pink-500 mr-2 rounded"> Osteoporosis</label>
-                            <div class="flex items-center space-x-2">
-                                <span>Marcapasos:</span>
-                                <label><input type="radio" name="marcapasos" class="text-pink-600"> Sí</label>
-                                <label><input type="radio" name="marcapasos" class="text-pink-600"> No</label>
-                            </div>
-                        </div>
-                        <div class="space-y-3">
-                            <input type="text" placeholder="Otro:" class="w-full border-b border-gray-300 focus:border-pink-500 focus:outline-none text-sm p-1">
-                            <input type="text" placeholder="Medicamentos:" class="w-full border-b border-gray-300 focus:border-pink-500 focus:outline-none text-sm p-1">
-                            <input type="text" placeholder="Alergias:" class="w-full border-b border-gray-300 focus:border-pink-500 focus:outline-none text-sm p-1">
-                            <input type="text" placeholder="Observaciones:" class="w-full border-b border-gray-300 focus:border-pink-500 focus:outline-none text-sm p-1">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- SECCIÓN: Contraindicaciones -->
-            <div class="p-8 border-b border-purple-100 bg-red-50/50">
-                <h2 class="text-xl font-bold mb-2 text-red-700 border-b-2 border-red-500 pb-2 inline-block">Contraindicaciones</h2>
-                <p class="text-sm text-red-600 font-medium mb-6">Marque con una X si el paciente presenta alguna de las siguientes condiciones. ⚠️ Si marcó alguna opción, es necesario valoración médica antes de iniciar.</p>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-                    <label class="flex items-center p-3 bg-white border border-red-200 rounded-lg cursor-pointer"><input type="checkbox" class="h-4 w-4 text-red-600 border-gray-300 rounded mr-3"> Embarazo</label>
-                    <label class="flex items-center p-3 bg-white border border-red-200 rounded-lg cursor-pointer"><input type="checkbox" class="h-4 w-4 text-red-600 border-gray-300 rounded mr-3"> Trombosis</label>
-                    <label class="flex items-center p-3 bg-white border border-red-200 rounded-lg cursor-pointer"><input type="checkbox" class="h-4 w-4 text-red-600 border-gray-300 rounded mr-3"> Problemas renales graves</label>
-                    <label class="flex items-center p-3 bg-white border border-red-200 rounded-lg cursor-pointer"><input type="checkbox" class="h-4 w-4 text-red-600 border-gray-300 rounded mr-3"> Fiebre</label>
-                    <label class="flex items-center p-3 bg-white border border-red-200 rounded-lg cursor-pointer"><input type="checkbox" class="h-4 w-4 text-red-600 border-gray-300 rounded mr-3"> Insuficiencia cardiaca</label>
-                    <label class="flex items-center p-3 bg-white border border-red-200 rounded-lg cursor-pointer"><input type="checkbox" class="h-4 w-4 text-red-600 border-gray-300 rounded mr-3"> Enfermedades autoinmunes</label>
-                    <label class="flex items-center p-3 bg-white border border-red-200 rounded-lg cursor-pointer"><input type="checkbox" class="h-4 w-4 text-red-600 border-gray-300 rounded mr-3"> Infección activa</label>
-                    <label class="flex items-center p-3 bg-white border border-red-200 rounded-lg cursor-pointer"><input type="checkbox" class="h-4 w-4 text-red-600 border-gray-300 rounded mr-3"> Hipertensión no controlada</label>
-                    <label class="flex items-center p-3 bg-white border border-red-200 rounded-lg cursor-pointer"><input type="checkbox" class="h-4 w-4 text-red-600 border-gray-300 rounded mr-3"> Uso de anticoagulantes</label>
-                    <label class="flex items-center p-3 bg-white border border-red-200 rounded-lg cursor-pointer"><input type="checkbox" class="h-4 w-4 text-red-600 border-gray-300 rounded mr-3"> Heridas abiertas</label>
-                    <label class="flex items-center p-3 bg-white border border-red-200 rounded-lg cursor-pointer"><input type="checkbox" class="h-4 w-4 text-red-600 border-gray-300 rounded mr-3"> Cáncer activo</label>
-                    <label class="flex items-center p-3 bg-white border border-red-200 rounded-lg cursor-pointer"><input type="checkbox" class="h-4 w-4 text-red-600 border-gray-300 rounded mr-3"> Otra</label>
-                </div>
-            </div>
-
-            <!-- SECCIÓN: Consentimiento y Políticas -->
-            <div class="p-8 border-b border-purple-100 bg-purple-50/30">
-                <h2 class="text-xl font-bold mb-6 text-purple-800 border-b-2 border-pink-500 pb-2 inline-block">Consentimiento y Políticas Sveltta</h2>
+                <label>Otro tratamiento: <input type="text" name="otro_tratamiento"></label>
                 
-                <div class="space-y-6 text-sm text-gray-700 bg-white p-6 border border-purple-100 rounded-lg shadow-inner h-80 overflow-y-auto mb-6">
-                    <p class="font-bold text-purple-900 text-lg border-b pb-1 mb-2">Consentimiento Informado</p>
-                    <ul class="list-none space-y-2 mb-4">
-                        <li class="flex items-start"><span class="text-pink-500 mr-2">✓</span> Declaro que la información proporcionada es verdadera.</li>
-                        <li class="flex items-start"><span class="text-pink-500 mr-2">✓</span> Me comprometo a informar cualquier cambio en mi estado de salud.</li>
-                        <li class="flex items-start"><span class="text-pink-500 mr-2">✓</span> Comprendo que los resultados dependen de alimentación, ejercicio, descanso, metabolismo y constancia, por lo que la clínica no garantiza resultados específicos.</li>
-                    </ul>
-
-                    <p class="font-bold text-purple-900 text-lg border-b pb-1 mb-2 mt-6">Reglas generales</p>
-                    <ul class="list-disc pl-5 space-y-1 mb-4">
-                        <li>Reserva previa: es obligatorio realizar una reserva antes de utilizar los equipos, Sin excepción.</li>
-                        <li><strong>Higiene y uso de equipos:</strong> Se recomienda llegar con una toalla deportiva.</li>
-                        <li>El uso de faja personal es obligatorio para el uso de los equipos tipo Vacutherm.</li>
-                    </ul>
-
-                    <p class="font-bold text-purple-900 text-lg border-b pb-1 mb-2 mt-6">Aviso de Privacidad</p>
-                    <p>SVELTTA VACU CENTER será responsable del tratamiento de los datos personales recabados para integrar su expediente, brindar seguimiento, programar citas y cumplir obligaciones legales.</p>
+                <div class="grid-2">
+                    <label>Frecuencia sugerida: <input type="text" name="frecuencia" placeholder="ej. 3 veces/semana"></label>
+                    <label>Duración: <input type="text" name="duracion" placeholder="ej. 30 min"></label>
                 </div>
+                <label>Número de sesiones sugeridas: <input type="number" name="num_sesiones"></label>
+                <label>Observaciones de valoración: <textarea name="obs_valoracion"></textarea></label>
+            </div>
 
-                <!-- Autorización de Fotografías -->
-                <div class="mb-6">
-                    <p class="text-sm font-bold text-purple-900 mb-3">Autorización de fotografías:</p>
-                    <div class="space-y-2">
-                        <label class="flex items-center text-sm text-gray-700 cursor-pointer">
-                            <input type="radio" name="fotos" class="text-pink-600 focus:ring-pink-500 mr-2"> Solo para seguimiento del expediente.
-                        </label>
-                        <label class="flex items-center text-sm text-gray-700 cursor-pointer">
-                            <input type="radio" name="fotos" class="text-pink-600 focus:ring-pink-500 mr-2"> También autorizo su uso con fines publicitarios.
-                        </label>
-                        <label class="flex items-center text-sm text-gray-700 cursor-pointer">
-                            <input type="radio" name="fotos" class="text-pink-600 focus:ring-pink-500 mr-2"> No autorizo.
-                        </label>
-                    </div>
-                </div>
+            <!-- CONSENTIMIENTO Y POLÍTICAS -->
+            <div class="section policies">
+                <h2>Consentimiento Informado y Políticas</h2>
+                
+                <h3>Consentimiento Informado</h3>
+                <ul>
+                    <li>Declaro que la información proporcionada es verdadera.</li>
+                    <li>Me comprometo a informar cualquier cambio en mi estado de salud.</li>
+                    <li>Comprendo que los resultados dependen de alimentación, ejercicio, descanso, metabolismo y constancia, por lo que la clínica no garantiza resultados específicos.</li>
+                    <li>Acepto que el resultado clínico y físico varía en función de variables individuales. Siempre se pedirá autorización momentos previos a generar contenido, para garantizar comodidad y privacidad.</li>
+                </ul>
 
-                <!-- Firma del Cliente (Digital) -->
-                <div>
-                    <p class="text-sm font-bold text-purple-900 mb-3">Firma del cliente:</p>
-                    <!-- Aquí es donde ocurre la magia de la firma -->
-                    <div class="relative border-2 border-dashed border-purple-300 rounded-lg bg-white h-32 w-full overflow-hidden">
-                        <span id="texto-firma" class="absolute inset-0 flex items-center justify-center text-purple-300 pointer-events-none select-none font-medium">Traza aquí tu firma</span>
-                        <canvas id="firma-canvas" class="absolute inset-0 w-full h-full cursor-crosshair"></canvas>
-                    </div>
-                    
-                    <div class="mt-4 flex items-center">
-                        <input type="text" placeholder="Nombre del cliente impreso" class="w-full md:w-1/2 border-b border-gray-300 focus:outline-none focus:border-pink-500 text-sm p-2 mr-4">
-                    </div>
+                <h3>Experiencia del Cliente</h3>
+                <p>Buscamos brindar una experiencia integral enfocada en bienestar, resultados y confort. Nuestro equipo acompañará al cliente en el uso correcto de los equipos y recomendaciones personalizadas.</p>
+                <p><strong>Reglas generales:</strong></p>
+                <ul>
+                    <li>Reserva previa obligatoria antes de utilizar los equipos, sin excepción.</li>
+                    <li><strong>Higiene y equipos:</strong> Se recomienda toalla deportiva. Para Vacucycle se requiere toalla grande que cubra la espalda (sin ella no se permite el uso). Uso de faja personal obligatorio para Vacutherm.</li>
+                    <li>Traer ropa deportiva adecuada y calzado óptimo. Ingerir alimentos al menos 30 min antes y mantener hidratación.</li>
+                    <li>El cliente es responsable de informar cualquier cambio en su estado de salud antes de cada sesión.</li>
+                </ul>
+
+                <h3>Políticas de Reservas y Cancelaciones</h3>
+                <p><strong>1) Cancelaciones y cambios:</strong></p>
+                <ul>
+                    <li>Deben realizarse con al menos 12 horas de anticipación.</li>
+                    <li>Cancelaciones con menos de 12 horas se consideran como sesiones utilizadas, no reembolsables ni reprogramables.</li>
+                    <li>Se realizan a través de WhatsApp o directamente en recepción.</li>
+                </ul>
+                <p><strong>2) Llegadas y retrasos:</strong></p>
+                <ul>
+                    <li>Se recomienda llegar al menos 10 minutos antes.</li>
+                    <li>Primeros 10 minutos de retraso se recortan de la sesión. Retrasos mayores a 10 minutos impiden el acceso a la sesión y no es reprogramable.</li>
+                </ul>
+                <p><strong>3) Uso de sesiones y membresías:</strong></p>
+                <ul>
+                    <li>Reserva de equipos y citas personal e intransferible. No hay reembolsos.</li>
+                    <li>Vigencia de 30 días a partir de la compra (excepto membresías PREMIUM y PLUS, que cuentan con una vigencia de 45 días).</li>
+                    <li>Al comprar una nueva membresía, se reactivan las sesiones no utilizadas de la membresía anterior.</li>
+                </ul>
+                <div class="note-box">
+                    * En caso de enfermedad o reposo por lesiones, se podrá brindar una extensión de las horas en la membresía activa.<br>
+                    * En caso de viaje, se podrá suspender temporalmente la membresía activa.
                 </div>
             </div>
 
-            <!-- Botón de Envío -->
-            <div class="p-8 text-center bg-white border-t border-purple-100">
-                <button type="button" class="bg-purple-700 text-white px-10 py-4 rounded-full font-bold hover:bg-purple-800 transition shadow-lg shadow-purple-200 w-full md:w-auto text-lg tracking-wide">
-                    Guardar Expediente Clínico
-                </button>
+            <!-- CONTRATO DE MEMBRESÍA Y DATOS PERSONALES (LEY LFPDPPP) -->
+            <div class="section" style="background: #faf8f5;">
+                <h2>Contrato de Membresía y Aviso de Privacidad</h2>
+                <p style="font-size: 0.9em; line-height: 1.5;">
+                    SVELTTA VACU CENTER será responsable del tratamiento de los datos personales recabados para integrar su expediente, brindar seguimiento, programar citas y cumplir obligaciones legales, de conformidad con la Ley Federal de Protección de Datos Personales en Posesión de los Particulares. La clienta podrá ejercer sus derechos ARCO a través del medio de contacto que establezca la empresa. (NOM-004-SSA3-2012).
+                </p>
+
+                <label><strong>Autorización de fotografías, videos (uso de imagen):</strong></label>
+                <div style="margin-top: 10px;">
+                    <label><input type="radio" name="uso_imagen" value="Solo seguimiento"> Solo para seguimiento del expediente.</label>
+                    <label><input type="radio" name="uso_imagen" value="Publicitario"> También autorizo su uso con fines publicitarios mediante mi consentimiento expreso.</label>
+                    <label><input type="radio" name="uso_imagen" value="No autorizo"> No autorizo.</label>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <label><input type="checkbox" required> <strong>He leído, comprendido y acepto en su totalidad el Consentimiento Informado, las Reglas de Experiencia, las Políticas de Sveltta y los términos del Tratamiento de Datos Personales.</strong></label>
+                </div>
             </div>
 
+            <button type="submit">Guardar Expediente Clínico</button>
         </form>
     </div>
-
-    <!-- Script de conexión y firma digital para Sveltta -->
-    <script>
-        // --- 1. CONFIGURACIÓN DE LA FIRMA DIGITAL ---
-        const canvas = document.getElementById('firma-canvas');
-        const ctx = canvas.getContext('2d');
-        const textoFirma = document.getElementById('texto-firma');
-        let dibujando = false;
-
-        function ajustarCanvas() {
-            const rect = canvas.parentElement.getBoundingClientRect();
-            canvas.width = rect.width;
-            canvas.height = rect.height;
-            ctx.lineWidth = 3;
-            ctx.lineCap = 'round';
-            ctx.strokeStyle = '#6B21A8'; // Color morado oscuro para la tinta
-        }
-        
-        ajustarCanvas();
-        window.addEventListener('resize', ajustarCanvas);
-
-        // Ocultar texto guía cuando empiezan a dibujar
-        function empezarDibujo(x, y) {
-            dibujando = true;
-            textoFirma.style.display = 'none'; // Desaparece el texto "Traza aquí tu firma"
-            ctx.beginPath();
-            ctx.moveTo(x, y);
-        }
-
-        // Eventos para computadora (Ratón)
-        canvas.addEventListener('mousedown', (e) => empezarDibujo(e.offsetX, e.offsetY));
-        canvas.addEventListener('mousemove', (e) => {
-            if (dibujando) {
-                ctx.lineTo(e.offsetX, e.offsetY);
-                ctx.stroke();
-            }
-        });
-        canvas.addEventListener('mouseup', () => dibujando = false);
-        canvas.addEventListener('mouseout', () => dibujando = false);
-
-        // Eventos para Celular/Tablet (Dedo)
-        canvas.addEventListener('touchstart', (e) => {
-            e.preventDefault(); 
-            const touch = e.touches[0];
-            const rect = canvas.getBoundingClientRect();
-            empezarDibujo(touch.clientX - rect.left, touch.clientY - rect.top);
-        }, { passive: false });
-
-        canvas.addEventListener('touchmove', (e) => {
-            e.preventDefault();
-            if (dibujando) {
-                const touch = e.touches[0];
-                const rect = canvas.getBoundingClientRect();
-                ctx.lineTo(touch.clientX - rect.left, touch.clientY - rect.top);
-                ctx.stroke();
-            }
-        }, { passive: false });
-        canvas.addEventListener('touchend', () => dibujando = false);
-
-        // --- 2. CONFIGURACIÓN DEL BOTÓN GUARDAR ---
-        const botonGuardar = document.querySelector('button');
-
-        botonGuardar.addEventListener('click', async (evento) => {
-            evento.preventDefault(); 
-
-            // Recolectamos el nombre del segundo campo de texto
-            const camposDeTexto = document.querySelectorAll('input[type="text"]');
-            const nombrePaciente = camposDeTexto[1].value || "Paciente sin nombre";
-
-            const paqueteDatos = {
-                nombre: nombrePaciente,
-                fechaRegistro: new Date().toLocaleString()
-            };
-
-            botonGuardar.innerText = "Guardando...";
-
-            try {
-                const respuesta = await fetch('/api/guardar-expediente', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(paqueteDatos)
-                });
-
-                const resultado = await respuesta.json();
-                
-                if (resultado.estatus === "éxito") {
-                    alert("¡Listo! El expediente de " + paqueteDatos.nombre + " se guardó en Sveltta.");
-                    botonGuardar.innerText = "Guardar Expediente Clínico";
-                    
-                    // Borramos la firma para que quede limpio para la siguiente clienta
-                    ctx.clearRect(0, 0, canvas.width, canvas.height); 
-                    textoFirma.style.display = 'flex'; // Volvemos a mostrar el texto guía
-                    camposDeTexto[1].value = ''; // Limpiamos el nombre
-                }
-            } catch (error) {
-                console.error("Error:", error);
-                alert("Hubo un problema de conexión con el servidor.");
-                botonGuardar.innerText = "Guardar Expediente Clínico";
-            }
-        });
-    </script>
 </body>
 </html>
+                          
