@@ -6,60 +6,302 @@
     <title>Expediente Clínico | Sveltta Premium</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
-        body { font-family: 'Montserrat', sans-serif; background-color: #f4f2f5; color: #111111; padding: 20px 10px; margin: 0; -webkit-font-smoothing: antialiased; }
-        .lux-container { max-width: 800px; margin: auto; background: #ffffff; padding: 40px 25px; border-radius: 16px; box-shadow: 0 20px 50px rgba(74, 46, 78, 0.08); }
-        @media(min-width: 768px) { .lux-container { padding: 60px 50px; } }
-        .brand-header { text-align: center; margin-bottom: 40px; }
-        .brand-title { font-size: 24px; font-weight: 600; letter-spacing: 4px; color: #000000; margin: 0; text-transform: uppercase; }
-        .brand-subtitle { font-size: 14px; font-weight: 700; color: #e91e63; letter-spacing: 3px; margin-top: 5px; }
-        .nom-tag { font-size: 10px; font-weight: 600; color: #555; letter-spacing: 2px; margin-top: 15px; }
-        h2 { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: #5d3a7d; border-bottom: 2px solid #eaeaea; padding-bottom: 10px; margin-top: 45px; margin-bottom: 25px; }
-        .input-group { margin-bottom: 20px; position: relative; }
-        .input-group label { display: block; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #333333; margin-bottom: 5px; }
-        .input-group input, .input-group textarea { width: 100%; border: none; border-bottom: 2px solid #d4c5d9; background: transparent; padding: 8px 0; font-size: 16px; font-weight: 600; color: #000000; font-family: 'Montserrat', sans-serif; transition: all 0.3s ease; border-radius: 0; }
-        .input-group input:focus, .input-group textarea:focus { outline: none; border-bottom: 2px solid #e91e63; }
+
+        body { 
+            font-family: 'Montserrat', sans-serif; 
+            background-color: #f4f2f5; 
+            color: #111111; 
+            padding: 20px 10px; 
+            margin: 0; 
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .lux-container { 
+            max-width: 800px; 
+            margin: auto; 
+            background: #ffffff; 
+            padding: 40px 25px; 
+            border-radius: 16px; 
+            box-shadow: 0 20px 50px rgba(74, 46, 78, 0.08); 
+        }
+
+        @media(min-width: 768px) {
+            .lux-container { padding: 60px 50px; }
+        }
+
+        .brand-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .brand-title {
+            font-size: 24px;
+            font-weight: 600; 
+            letter-spacing: 4px;
+            color: #000000;
+            margin: 0;
+            text-transform: uppercase;
+        }
+        .brand-subtitle {
+            font-size: 14px;
+            font-weight: 700;
+            color: #e91e63;
+            letter-spacing: 3px;
+            margin-top: 5px;
+        }
+        .nom-tag {
+            font-size: 10px;
+            font-weight: 600;
+            color: #555;
+            letter-spacing: 2px;
+            margin-top: 15px;
+        }
+
+        h2 { 
+            font-size: 14px; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            color: #5d3a7d; 
+            border-bottom: 2px solid #eaeaea; 
+            padding-bottom: 10px; 
+            margin-top: 45px; 
+            margin-bottom: 25px; 
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .input-group label {
+            display: block;
+            font-size: 12px;
+            font-weight: 600; 
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #333333;
+            margin-bottom: 5px;
+        }
+        .input-group input, .input-group textarea {
+            width: 100%;
+            border: none;
+            border-bottom: 2px solid #d4c5d9; 
+            background: transparent;
+            padding: 8px 0;
+            font-size: 16px;
+            font-weight: 600; 
+            color: #000000;
+            font-family: 'Montserrat', sans-serif;
+            transition: all 0.3s ease;
+            border-radius: 0;
+        }
+        .input-group input:focus, .input-group textarea:focus {
+            outline: none;
+            border-bottom: 2px solid #e91e63;
+        }
+
         .grid-2 { display: grid; grid-template-columns: 1fr; gap: 0 20px; }
         .grid-3 { display: grid; grid-template-columns: 1fr; gap: 0 20px; }
-        @media(min-width: 600px) { .grid-2 { grid-template-columns: 1fr 1fr; } .grid-3 { grid-template-columns: 1fr 1fr 1fr; } }
-        .tag-container { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 25px; margin-top: 10px; }
+        @media(min-width: 600px) {
+            .grid-2 { grid-template-columns: 1fr 1fr; }
+            .grid-3 { grid-template-columns: 1fr 1fr 1fr; }
+        }
+
+        .tag-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 25px;
+            margin-top: 10px;
+        }
         .lux-check input { display: none; }
-        .lux-check label { display: inline-block; border: 2px solid #d4c5d9; padding: 10px 18px; border-radius: 30px; font-size: 13px; color: #111111; font-weight: 600; cursor: pointer; transition: all 0.3s ease; background: #fff; }
-        .lux-check input:checked + label { background: #5d3a7d; border-color: #5d3a7d; color: #fff; box-shadow: 0 4px 10px rgba(93, 58, 125, 0.3); }
-        .measure-box { display: flex; align-items: flex-end; margin-bottom: 15px; border-bottom: 1px solid #e0e0e0; padding-bottom: 5px; }
-        .measure-box label { width: 50%; font-size: 13px; font-weight: 600; color: #222222; text-transform: uppercase; letter-spacing: 1px; }
-        .measure-box input { width: 35%; border: none; text-align: center; font-size: 17px; font-weight: 700; background: transparent; color: #5d3a7d; outline: none; }
-        .measure-box span { width: 15%; font-size: 11px; font-weight: 600; color: #777; text-align: right; }
-        .lux-alert { background: #fdf5f7; border: 2px solid #fce4e9; padding: 25px; border-radius: 8px; margin-top: 30px; }
+        .lux-check label {
+            display: inline-block;
+            border: 2px solid #d4c5d9; 
+            padding: 10px 18px;
+            border-radius: 30px;
+            font-size: 13px;
+            color: #111111; 
+            font-weight: 600; 
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: #fff;
+        }
+        .lux-check input:checked + label {
+            background: #5d3a7d;
+            border-color: #5d3a7d;
+            color: #fff;
+            box-shadow: 0 4px 10px rgba(93, 58, 125, 0.3);
+        }
+
+        .measure-box {
+            display: flex;
+            align-items: flex-end;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 5px;
+        }
+        .measure-box label {
+            width: 50%;
+            font-size: 13px;
+            font-weight: 600; 
+            color: #222222;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .measure-box input {
+            width: 35%;
+            border: none;
+            text-align: center;
+            font-size: 17px;
+            font-weight: 700; 
+            background: transparent;
+            color: #5d3a7d;
+            outline: none;
+        }
+        .measure-box span {
+            width: 15%;
+            font-size: 11px;
+            font-weight: 600;
+            color: #777;
+            text-align: right;
+        }
+
+        .lux-alert {
+            background: #fdf5f7;
+            border: 2px solid #fce4e9;
+            padding: 25px;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
         .lux-alert h2 { border: none; margin-top: 0; color: #d81b60; margin-bottom: 10px;}
         .alert-msg { font-size: 12px; font-weight: 700; color: #d81b60; text-transform: uppercase; letter-spacing: 1px; margin-top: 20px; display: flex; align-items: center; gap: 8px;}
-        .policy-text { font-size: 13px; color: #222222; line-height: 1.8; font-weight: 500; }
+
+        .policy-text {
+            font-size: 13px;
+            color: #222222;
+            line-height: 1.8;
+            font-weight: 500; 
+        }
         .policy-text ul { padding-left: 15px; }
         .policy-text li { margin-bottom: 10px; }
         .policy-highlight { font-weight: 700; color: #5d3a7d; }
-        .policy-note-box { background: #eee8f0; border-left: 4px solid #5d3a7d; padding: 15px 20px; border-radius: 4px; margin-top: 15px; font-size: 13px; font-weight: 600; color: #444; }
-        .signature-pad-wrapper { background: #fafafa; border: 2px solid #eaeaea; border-radius: 12px; padding: 20px; margin-top: 40px; text-align: center; }
-        .signature-pad-wrapper h3 { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: #222222; margin-top: 0; margin-bottom: 20px; }
-        .canvas-container { position: relative; background: #ffffff; border: 2px dashed #a08ba8; border-radius: 8px; margin-bottom: 15px; overflow: hidden; }
-        canvas { width: 100%; height: 250px; cursor: crosshair; display: block; }
-        .btn-clear { background: #e0e0e0; color: #333; border: none; padding: 10px 20px; border-radius: 20px; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; font-weight: 700; transition: 0.3s; }
+
+        .policy-note-box {
+            background: #eee8f0;
+            border-left: 4px solid #5d3a7d;
+            padding: 15px 20px;
+            border-radius: 4px;
+            margin-top: 15px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #444;
+        }
+
+        .signature-pad-wrapper {
+            background: #fafafa;
+            border: 2px solid #eaeaea;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 40px;
+            text-align: center;
+        }
+        .signature-pad-wrapper h3 {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #222222;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+        .canvas-container {
+            position: relative;
+            background: #ffffff;
+            border: 2px dashed #a08ba8;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+        canvas {
+            width: 100%;
+            height: 250px;
+            cursor: crosshair;
+            display: block;
+        }
+        .btn-clear {
+            background: #e0e0e0;
+            color: #333;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            font-weight: 700;
+            transition: 0.3s;
+        }
         .btn-clear:hover { background: #d0d0d0; }
-        .nutriologa-area { background-color: #fcfbfd; border: 2px solid #5d3a7d; border-radius: 16px; padding: 35px 25px; margin-top: 50px; position: relative; box-shadow: 0 10px 30px rgba(93, 58, 125, 0.05); }
-        .nutriologa-badge { background: #5d3a7d; color: white; padding: 10px 20px; border-radius: 30px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; position: absolute; top: -18px; left: 50%; transform: translateX(-50%); white-space: nowrap; box-shadow: 0 4px 10px rgba(93, 58, 125, 0.3); }
-        .btn-submit { background: #1a1a1a; color: white; border: none; width: 100%; padding: 20px; font-size: 15px; text-transform: uppercase; letter-spacing: 3px; font-weight: 600; border-radius: 8px; cursor: pointer; margin-top: 40px; transition: 0.3s; }
-        .btn-submit:hover { background: #5d3a7d; box-shadow: 0 10px 20px rgba(93, 58, 125, 0.2); }
+
+        .nutriologa-area {
+            background-color: #fcfbfd;
+            border: 2px solid #5d3a7d;
+            border-radius: 16px;
+            padding: 35px 25px;
+            margin-top: 50px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(93, 58, 125, 0.05);
+        }
+        .nutriologa-badge {
+            background: #5d3a7d;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: absolute;
+            top: -18px;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+            box-shadow: 0 4px 10px rgba(93, 58, 125, 0.3);
+        }
+
+        .btn-submit {
+            background: #1a1a1a;
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 20px;
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 40px;
+            transition: 0.3s;
+        }
+        .btn-submit:hover {
+            background: #5d3a7d;
+            box-shadow: 0 10px 20px rgba(93, 58, 125, 0.2);
+        }
     </style>
 </head>
 <body>
 
     <div class="lux-container">
+        
         <div class="brand-header">
             <h1 class="brand-title">Expediente Clínico</h1>
             <div class="brand-subtitle">SVELTTA VACU CENTER</div>
             <div class="nom-tag">CUMPLIMIENTO NOM-004-SSA3-2012</div>
         </div>
 
-        <!-- AQUÍ ESTÁ EL CAMBIO IMPORTANTE EN ACTION -->
         <form action="/api/guardar-expediente" method="POST" id="formExpediente">
+
             <h2>I. Datos Generales</h2>
             <div class="grid-2">
                 <div class="input-group"><label>Fecha</label><input type="date" name="fecha"></div>
@@ -71,29 +313,319 @@
                 <div class="input-group"><label>Edad</label><input type="number" name="edad"></div>
                 <div class="input-group"><label>Teléfono</label><input type="tel" name="telefono"></div>
             </div>
-            <!-- ... (resto del formulario igual) ... -->
-            
+            <div class="grid-2">
+                <div class="input-group"><label>Correo Electrónico</label><input type="email" name="correo"></div>
+                <div class="input-group"><label>Ocupación</label><input type="text" name="ocupacion"></div>
+            </div>
+            <div class="grid-2">
+                <div class="input-group"><label>Contacto de Emergencia</label><input type="text" name="contacto_emergencia"></div>
+                <div class="input-group"><label>Tel. de Emergencia</label><input type="tel" name="tel_emergencia"></div>
+            </div>
+
+            <h2>II. ¿Cómo nos conoció?</h2>
+            <div class="tag-container">
+                <div class="lux-check"><input type="checkbox" id="c_fb" name="conocio" value="Facebook"><label for="c_fb">Facebook</label></div>
+                <div class="lux-check"><input type="checkbox" id="c_ig" name="conocio" value="Instagram"><label for="c_ig">Instagram</label></div>
+                <div class="lux-check"><input type="checkbox" id="c_tk" name="conocio" value="TikTok"><label for="c_tk">TikTok</label></div>
+                <div class="lux-check"><input type="checkbox" id="c_gl" name="conocio" value="Google"><label for="c_gl">Google</label></div>
+                <div class="lux-check"><input type="checkbox" id="c_re" name="conocio" value="Recomendación"><label for="c_re">Recomendación</label></div>
+            </div>
+            <div class="input-group"><label>Otro / Especificar</label><input type="text" name="conocio_otro"></div>
+
+            <h2>III. Objetivos Personales</h2>
+            <div class="tag-container">
+                <div class="lux-check"><input type="checkbox" id="o_1" name="objetivos" value="Bajar de peso"><label for="o_1">Bajar de peso</label></div>
+                <div class="lux-check"><input type="checkbox" id="o_2" name="objetivos" value="Reducir grasa"><label for="o_2">Reducir grasa corporal</label></div>
+                <div class="lux-check"><input type="checkbox" id="o_3" name="objetivos" value="Tonificar"><label for="o_3">Tonificar</label></div>
+                <div class="lux-check"><input type="checkbox" id="o_4" name="objetivos" value="Condicion"><label for="o_4">Mejorar condición física</label></div>
+                <div class="lux-check"><input type="checkbox" id="o_5" name="objetivos" value="Salud"><label for="o_5">Mejorar salud general</label></div>
+                <div class="lux-check"><input type="checkbox" id="o_6" name="objetivos" value="Complementar"><label for="o_6">Complementar entrenamiento</label></div>
+                <div class="lux-check"><input type="checkbox" id="o_7" name="objetivos" value="Activa"><label for="o_7">Mantenerme activa</label></div>
+            </div>
+            <div class="input-group"><label>Otro / Especificar</label><input type="text" name="objetivo_otro"></div>
+
+            <h2>IV. Hábitos de Salud</h2>
+            <label style="font-size: 12px; font-weight: 600; color:#333; text-transform:uppercase; letter-spacing:1px; margin-bottom: 5px; display: block;">Consumo de Agua Diario</label>
+            <div class="tag-container">
+                <div class="lux-check"><input type="radio" id="a_1" name="agua" value="Menos de 1 L"><label for="a_1">Menos de 1 L</label></div>
+                <div class="lux-check"><input type="radio" id="a_2" name="agua" value="1 - 2 L"><label for="a_2">1 - 2 L</label></div>
+                <div class="lux-check"><input type="radio" id="a_3" name="agua" value="2 - 3 L"><label for="a_3">2 - 3 L</label></div>
+                <div class="lux-check"><input type="radio" id="a_4" name="agua" value="Más de 3 L"><label for="a_4">Más de 3 L</label></div>
+            </div>
+
+            <label style="font-size: 12px; font-weight: 600; color:#333; text-transform:uppercase; letter-spacing:1px; margin-bottom: 5px; display: block;">Horas de Sueño</label>
+            <div class="tag-container">
+                <div class="lux-check"><input type="radio" id="s_1" name="sueno" value="Menos de 5"><label for="s_1">Menos de 5</label></div>
+                <div class="lux-check"><input type="radio" id="s_2" name="sueno" value="5 - 6"><label for="s_2">5 - 6</label></div>
+                <div class="lux-check"><input type="radio" id="s_3" name="sueno" value="7 - 8"><label for="s_3">7 - 8</label></div>
+                <div class="lux-check"><input type="radio" id="s_4" name="sueno" value="Más de 8"><label for="s_4">Más de 8</label></div>
+            </div>
+
+            <label style="font-size: 12px; font-weight: 600; color:#333; text-transform:uppercase; letter-spacing:1px; margin-bottom: 5px; display: block;">Nivel de Estrés</label>
+            <div class="tag-container">
+                <div class="lux-check"><input type="radio" id="e_1" name="estres" value="Bajo"><label for="e_1">Bajo</label></div>
+                <div class="lux-check"><input type="radio" id="e_2" name="estres" value="Medio"><label for="e_2">Medio</label></div>
+                <div class="lux-check"><input type="radio" id="e_3" name="estres" value="Alto"><label for="e_3">Alto</label></div>
+            </div>
+
+            <div class="grid-2">
+                <div>
+                    <label style="font-size: 12px; font-weight: 600; color:#333; text-transform:uppercase; letter-spacing:1px; margin-bottom: 5px; display: block;">Actividad Física</label>
+                    <div class="tag-container">
+                        <div class="lux-check"><input type="radio" id="af_si" name="actividad_fisica" value="Sí"><label for="af_si">Sí</label></div>
+                        <div class="lux-check"><input type="radio" id="af_no" name="actividad_fisica" value="No"><label for="af_no">No</label></div>
+                    </div>
+                </div>
+                <div>
+                    <label style="font-size: 12px; font-weight: 600; color:#333; text-transform:uppercase; letter-spacing:1px; margin-bottom: 5px; display: block;">Días por semana</label>
+                    <div class="tag-container">
+                        <div class="lux-check"><input type="radio" id="d_1" name="dias_actividad" value="1"><label for="d_1">1</label></div>
+                        <div class="lux-check"><input type="radio" id="d_2" name="dias_actividad" value="2"><label for="d_2">2</label></div>
+                        <div class="lux-check"><input type="radio" id="d_3" name="dias_actividad" value="3"><label for="d_3">3</label></div>
+                        <div class="lux-check"><input type="radio" id="d_4" name="dias_actividad" value="4"><label for="d_4">4</label></div>
+                        <div class="lux-check"><input type="radio" id="d_5" name="dias_actividad" value="5+"><label for="d_5">5+</label></div>
+                    </div>
+                </div>
+            </div>
+            <div class="input-group"><label>Tipo de Actividad</label><input type="text" name="tipo_actividad"></div>
+
+            <h2>V. Antecedentes de Salud</h2>
+            <div class="tag-container">
+                <div class="lux-check"><input type="checkbox" id="as_1" name="antecedentes" value="Hipertensión"><label for="as_1">Hipertensión</label></div>
+                <div class="lux-check"><input type="checkbox" id="as_2" name="antecedentes" value="Diabetes"><label for="as_2">Diabetes</label></div>
+                <div class="lux-check"><input type="checkbox" id="as_3" name="antecedentes" value="Cardiovascular"><label for="as_3">Enf. Cardiovascular</label></div>
+                <div class="lux-check"><input type="checkbox" id="as_4" name="antecedentes" value="Asma"><label for="as_4">Asma</label></div>
+                <div class="lux-check"><input type="checkbox" id="as_5" name="antecedentes" value="Várices"><label for="as_5">Várices</label></div>
+                <div class="lux-check"><input type="checkbox" id="as_6" name="antecedentes" value="Lactancia"><label for="as_6">Lactancia</label></div>
+                <div class="lux-check"><input type="checkbox" id="as_7" name="antecedentes" value="Epilepsia"><label for="as_7">Epilepsia</label></div>
+                <div class="lux-check"><input type="checkbox" id="as_8" name="antecedentes" value="Lesion"><label for="as_8">Lesión Muscular</label></div>
+                <div class="lux-check"><input type="checkbox" id="as_9" name="antecedentes" value="Cirugia"><label for="as_9">Cirugía Reciente</label></div>
+                <div class="lux-check"><input type="checkbox" id="as_10" name="antecedentes" value="Columna"><label for="as_10">Prob. de Columna</label></div>
+                <div class="lux-check"><input type="checkbox" id="as_11" name="antecedentes" value="Osteoporosis"><label for="as_11">Osteoporosis</label></div>
+                <div class="lux-check"><input type="checkbox" id="as_12" name="antecedentes" value="Marcapasos"><label for="as_12">Marcapasos</label></div>
+            </div>
+            <div class="input-group"><label>Medicamentos Actuales</label><input type="text" name="medicamentos"></div>
+            <div class="input-group"><label>Alergias</label><input type="text" name="alergias"></div>
+            <div class="input-group"><label>Observaciones Generales de Salud</label><textarea name="obs_salud" rows="2"></textarea></div>
+
+            <div class="lux-alert">
+                <h2>Contraindicaciones Clínicas</h2>
+                <p style="font-size: 13px; font-weight: 500; color: #444; margin-top: -15px; margin-bottom: 20px;">Marque si el paciente presenta alguna de las siguientes condiciones:</p>
+                <div class="tag-container" style="margin-bottom: 0;">
+                    <div class="lux-check"><input type="checkbox" id="ct_1" name="contraindicaciones" value="Embarazo"><label for="ct_1">Embarazo</label></div>
+                    <div class="lux-check"><input type="checkbox" id="ct_2" name="contraindicaciones" value="Fiebre"><label for="ct_2">Fiebre</label></div>
+                    <div class="lux-check"><input type="checkbox" id="ct_3" name="contraindicaciones" value="Infeccion"><label for="ct_3">Infección Activa</label></div>
+                    <div class="lux-check"><input type="checkbox" id="ct_4" name="contraindicaciones" value="Heridas"><label for="ct_4">Heridas Abiertas</label></div>
+                    <div class="lux-check"><input type="checkbox" id="ct_5" name="contraindicaciones" value="Trombosis"><label for="ct_5">Trombosis</label></div>
+                    <div class="lux-check"><input type="checkbox" id="ct_6" name="contraindicaciones" value="Insuf. Cardiaca"><label for="ct_6">Insuficiencia Cardiaca</label></div>
+                    <div class="lux-check"><input type="checkbox" id="ct_7" name="contraindicaciones" value="Hipertension severa"><label for="ct_7">Hipertensión (>160/100)</label></div>
+                    <div class="lux-check"><input type="checkbox" id="ct_8" name="contraindicaciones" value="Cancer"><label for="ct_8">Cáncer Activo</label></div>
+                    <div class="lux-check"><input type="checkbox" id="ct_9" name="contraindicaciones" value="Renal"><label for="ct_9">Prob. Renales Graves</label></div>
+                    <div class="lux-check"><input type="checkbox" id="ct_10" name="contraindicaciones" value="Autoinmune"><label for="ct_10">Enf. Autoinmune</label></div>
+                    <div class="lux-check"><input type="checkbox" id="ct_11" name="contraindicaciones" value="Anticoagulantes"><label for="ct_11">Uso Anticoagulantes</label></div>
+                </div>
+                <div class="alert-msg">
+                    <span style="font-size: 16px;">⚠️</span> Si se marca alguna opción, se requiere valoración médica.
+                </div>
+            </div>
+
+            <h2>VI. Políticas de Reservas y Cancelaciones</h2>
+            <div class="policy-text">
+                <p class="policy-highlight">1) Cancelaciones y cambios:</p>
+                <ul>
+                    <li>Deben realizarse con al menos 12 horas de anticipación.</li>
+                    <li>Cancelaciones con menos de 12 horas se consideran como sesiones utilizadas y no son reembolsables ni reprogramables.</li>
+                    <li>Las cancelaciones se deben realizar a través de WhatsApp o directamente en recepción.</li>
+                </ul>
+                <p class="policy-highlight">2) Llegadas y retrasos:</p>
+                <ul>
+                    <li>Se recomienda llegar con al menos 10 minutos de anticipación.</li>
+                    <li>Si se llega dentro de los primeros 10 minutos de la sesión, esos minutos se recortan de la sesión.</li>
+                    <li>Retrasos mayores a 10 minutos implican que ya no se podrá dar acceso a la sesión, y esta no podrá ser reprogramada.</li>
+                </ul>
+                <p class="policy-highlight">3) Uso de sesiones y membresías:</p>
+                <ul>
+                    <li>La reserva de equipos y citas es personal e intransferible.</li>
+                    <li>No se aceptan reembolsos de pases diarios o membresías una vez realizadas.</li>
+                    <li>Todas las membresías y pases tienen una vigencia de 30 días a partir de la compra, a excepción de las membresías PREMIUM y PLUS, que cuentan con una vigencia de 45 días.</li>
+                    <li>En la compra de una nueva membresía, se reactivan las sesiones no utilizadas de la membresía anterior.</li>
+                </ul>
+                
+                <div class="policy-note-box">
+                    <p style="margin-top: 0; margin-bottom: 10px;">En caso de enfermedad o reposo por lesiones, se podrá brindar una extensión de las horas en la membresía activa.</p>
+                    <p style="margin-bottom: 0;">En caso de viaje, se podrá suspender temporalmente la membresía activa.</p>
+                </div>
+            </div>
+
+            <div style="background: #fafafa; padding: 20px; border-radius: 8px; margin-top: 30px; font-size: 12px; color: #333; line-height: 1.6; font-weight: 500;">
+                <b style="color: #5d3a7d;">Aviso de Privacidad:</b> SVELTTA VACU CENTER protegerá los datos recabados en este expediente conforme a la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (NOM-004-SSA3-2012).
+                
+                <p style="margin-top: 15px; color: #1a1a1a; font-weight: 700;">Autorización de uso de imagen (Fotos/Videos):</p>
+                <div class="tag-container" style="margin-bottom: 0;">
+                    <div class="lux-check"><input type="radio" id="img_1" name="uso_imagen" value="Solo expediente"><label for="img_1">Solo uso clínico</label></div>
+                    <div class="lux-check"><input type="radio" id="img_2" name="uso_imagen" value="Publicitario"><label for="img_2">Autorizo publicidad</label></div>
+                    <div class="lux-check"><input type="radio" id="img_3" name="uso_imagen" value="No autorizo"><label for="img_3">No autorizo</label></div>
+                </div>
+            </div>
+
+            <div class="signature-pad-wrapper">
+                <h3>Firma Electrónica de Conformidad</h3>
+                <div class="grid-2" style="margin-bottom: 15px;">
+                    <div class="input-group" style="margin-bottom: 0;">
+                        <input type="text" name="nombre_firma" placeholder="Nombre completo de la clienta" required style="text-align: center; border-bottom: 2px solid #5d3a7d; font-weight: 700;">
+                    </div>
+                    <div class="input-group" style="margin-bottom: 0;">
+                        <input type="date" name="fecha_firma" required style="text-align: center; border-bottom: 2px solid #5d3a7d; font-weight: 700;">
+                    </div>
+                </div>
+
+                <p style="font-size: 11px; font-weight: 600; color: #555; text-transform: uppercase; margin-bottom: 10px;">Por favor, firme en el recuadro inferior:</p>
+                
+                <div class="canvas-container">
+                    <canvas id="pizarraFirma"></canvas>
+                </div>
+                
+                <button type="button" id="limpiarFirma" class="btn-clear">Borrar y volver a firmar</button>
+                <input type="hidden" name="firma" id="inputFirma">
+            </div>
+
+            <div class="nutriologa-area">
+                <div class="nutriologa-badge">Área de Uso Exclusivo Nutrióloga</div>
+                
+                <h2>VII. Mediciones Corporales</h2>
+                <div class="grid-2">
+                    <div>
+                        <div class="measure-box"><label>Peso</label><input type="number" step="0.1" name="peso"><span>kg</span></div>
+                        <div class="measure-box"><label>Estatura</label><input type="number" step="0.1" name="estatura"><span>cm</span></div>
+                        <div class="measure-box"><label>IMC</label><input type="text" name="imc"><span></span></div>
+                        <div class="measure-box"><label>% Grasa</label><input type="text" name="grasa"><span>%</span></div>
+                        <div class="measure-box"><label>% Masa Muscular</label><input type="text" name="masa_muscular"><span>%</span></div>
+                        <div class="measure-box"><label>Grasa Visceral</label><input type="text" name="grasa_visceral"><span></span></div>
+                        <div class="measure-box"><label>Edad Metabólica</label><input type="number" name="edad_metabolica"><span></span></div>
+                    </div>
+                    <div>
+                        <div class="measure-box"><label>Cintura</label><input type="number" step="0.1" name="cintura"><span>cm</span></div>
+                        <div class="measure-box"><label>Abdomen</label><input type="number" step="0.1" name="abdomen"><span>cm</span></div>
+                        <div class="measure-box"><label>Cadera</label><input type="number" step="0.1" name="cadera"><span>cm</span></div>
+                        <div class="measure-box"><label>Brazo</label><input type="number" step="0.1" name="brazo"><span>cm</span></div>
+                        <div class="measure-box"><label>Muslo</label><input type="number" step="0.1" name="muslo"><span>cm</span></div>
+                        <div class="measure-box"><label>Pantorrilla</label><input type="number" step="0.1" name="pantorrilla"><span>cm</span></div>
+                    </div>
+                </div>
+                <div class="input-group" style="margin-top: 15px;"><label>Observaciones Físicas</label><textarea name="obs_mediciones" rows="2"></textarea></div>
+
+                <h2>VIII. Plan y Tratamiento</h2>
+                <div class="input-group"><label>Motivo de Consulta</label><input type="text" name="motivo"></div>
+                <div class="input-group"><label>Diagnóstico Funcional</label><textarea name="diagnostico" rows="2"></textarea></div>
+                <div class="input-group"><label>Objetivos Terapéuticos</label><textarea name="objetivos_terapeuticos" rows="2"></textarea></div>
+                
+                <label style="font-size: 12px; font-weight: 600; color:#333; text-transform:uppercase; letter-spacing:1px; margin-bottom: 5px; display: block;">Plan de Tratamiento Seleccionado</label>
+                <div class="tag-container">
+                    <div class="lux-check"><input type="checkbox" id="tr_1" name="tratamiento" value="Vacucycle"><label for="tr_1">Vacucycle</label></div>
+                    <div class="lux-check"><input type="checkbox" id="tr_2" name="tratamiento" value="Vacutherm"><label for="tr_2">Vacutherm</label></div>
+                    <div class="lux-check"><input type="checkbox" id="tr_3" name="tratamiento" value="Slim Roller"><label for="tr_3">Slim Roller</label></div>
+                    <div class="lux-check"><input type="checkbox" id="tr_4" name="tratamiento" value="Combinación"><label for="tr_4">Combinación Tecnologías</label></div>
+                </div>
+                
+                <div class="grid-3">
+                    <div class="input-group"><label>Frecuencia Semanal</label><input type="text" name="frecuencia" placeholder="Ej. 3 sesiones"></div>
+                    <div class="input-group"><label>Duración</label><input type="text" name="duracion" placeholder="Ej. 30 min"></div>
+                    <div class="input-group"><label>Total Sesiones</label><input type="number" name="num_sesiones"></div>
+                </div>
+                <div class="input-group"><label>Notas de Tratamiento</label><textarea name="obs_valoracion" rows="2"></textarea></div>
+            </div>
+
             <button type="submit" class="btn-submit">Guardar Expediente Oficial</button>
         </form>
     </div>
 
     <script>
-        // SCRIPT DE ENVÍO AUTOMÁTICO PARA QUE NO SEA PÁGINA BLANCA
-        document.getElementById('formExpediente').addEventListener('submit', async (e) => {
+        const canvas = document.getElementById('pizarraFirma');
+        const ctx = canvas.getContext('2d');
+        let dibujando = false;
+
+        function redimensionarCanvas() {
+            const rect = canvas.parentElement.getBoundingClientRect();
+            canvas.width = rect.width;
+            canvas.height = 250; 
+            ctx.lineWidth = 3;
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
+            ctx.strokeStyle = '#1a1a1a'; 
+        }
+        
+        window.addEventListener('resize', redimensionarCanvas);
+        setTimeout(redimensionarCanvas, 100); 
+
+        function obtenerPosicion(e) {
+            const rect = canvas.getBoundingClientRect();
+            const clienteX = e.touches ? e.touches[0].clientX : e.clientX;
+            const clienteY = e.touches ? e.touches[0].clientY : e.clientY;
+            return {
+                x: clienteX - rect.left,
+                y: clienteY - rect.top
+            };
+        }
+
+        function iniciarDibujo(e) {
+            e.preventDefault(); 
+            dibujando = true;
+            const pos = obtenerPosicion(e);
+            ctx.beginPath();
+            ctx.moveTo(pos.x, pos.y);
+            ctx.lineTo(pos.x, pos.y);
+            ctx.stroke();
+        }
+
+        function dibujar(e) {
+            if (!dibujando) return;
+            e.preventDefault(); 
+            const pos = obtenerPosicion(e);
+            ctx.lineTo(pos.x, pos.y);
+            ctx.stroke();
+        }
+
+        function detenerDibujo(e) {
+            if (!dibujando) return;
+            if(e && e.type !== 'mouseout') e.preventDefault();
+            dibujando = false;
+            document.getElementById('inputFirma').value = canvas.toDataURL('image/png');
+        }
+
+        canvas.addEventListener('mousedown', iniciarDibujo);
+        canvas.addEventListener('mousemove', dibujar);
+        canvas.addEventListener('mouseup', detenerDibujo);
+        canvas.addEventListener('mouseout', detenerDibujo);
+        
+        canvas.addEventListener('touchstart', iniciarDibujo, {passive: false});
+        canvas.addEventListener('touchmove', dibujar, {passive: false});
+        canvas.addEventListener('touchend', detenerDibujo);
+        canvas.addEventListener('touchcancel', detenerDibujo);
+
+        document.getElementById('limpiarFirma').addEventListener('click', () => {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            document.getElementById('inputFirma').value = '';
+        });
+        
+        document.getElementById('formExpediente').addEventListener('submit', async function(e) {
             e.preventDefault();
-            const formData = new FormData(e.target);
+            document.getElementById('inputFirma').value = canvas.toDataURL('image/png');
+            
+            const formData = new FormData(this);
             const data = Object.fromEntries(formData.entries());
             
             try {
                 const response = await fetch('/api/guardar-expediente', {
                     method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(data)
                 });
                 const result = await response.json();
-                alert(result.mensaje); // Te avisará cuando se guarde
-            } catch (error) {
-                alert("Error al guardar, intenta de nuevo.");
+                alert(result.mensaje || "¡Expediente guardado con éxito!");
+                this.reset();
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+            } catch (err) {
+                alert("Error al conectar con el servidor.");
             }
         });
     </script>
