@@ -1,15 +1,16 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
-const { MongoClient } = require('mongodb'); // Herramienta para conectar a MongoDB
+const { MongoClient } = require('mongodb');
 
 const app = express();
 const puerto = process.env.PORT || 3000; 
 
-app.use(express.json());
+// Aumentamos el límite de tamaño para que acepte la firma sin reiniciarse
+app.use(express.json({ limit: '10mb' }));
+app.use(express.urlencoded({ limit: '10mb', extended: true }));
 app.use(cors());
 
-// PEGA AQUÍ TU LLAVE SECRETA ENTRE LAS COMILLAS:
 const uri = "mongodb+srv://mariannefalt45_db_user:cF8ldzznf215zMXF@cluster0.5ell803.mongodb.net/?appName=Cluster0";
 const client = new MongoClient(uri);
 
@@ -23,21 +24,17 @@ async function conectarDB() {
 }
 conectarDB();
 
-// Entregar la página web visual
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'expediente.html'));
 });
 
-// Ruta para guardar el expediente DIRECTO A LA BASE DE DATOS
 app.post('/api/guardar-expediente', async (req, res) => {
     try {
         const datosPaciente = req.body;
         
-        // Seleccionamos nuestra base de datos y la colección de expedientes
         const database = client.db("SvelttaDB");
         const expedientes = database.collection("expedientes");
         
-        // Guardamos el documento de forma permanente
         const resultado = await expedientes.insertOne(datosPaciente);
         
         console.log("-------------------------------------------------");
@@ -47,7 +44,7 @@ app.post('/api/guardar-expediente', async (req, res) => {
         
         res.json({ 
             estatus: "éxito", 
-            mensaje: "Expediente guardado permanentemente en la base de datos." 
+            mensaje: "¡Expediente guardado correctamente en la base de datos!" 
         });
     } catch (error) {
         console.error("Error al guardar:", error);
