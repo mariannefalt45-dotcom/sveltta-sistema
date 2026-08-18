@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+
+   <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -6,14 +7,14 @@
     <title>Expediente Clínico | Sveltta Premium</title>
     <style>
         /* ==========================================
-           DISEÑO PREMIUM "THE LANDMARK" EDITION
+           DISEÑO PREMIUM "THE LANDMARK" - LETRA FUERTE
            ========================================== */
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
 
         body { 
             font-family: 'Montserrat', sans-serif; 
             background-color: #f4f2f5; 
-            color: #2b2b2b; 
+            color: #111111; 
             padding: 20px 10px; 
             margin: 0; 
             -webkit-font-smoothing: antialiased;
@@ -39,68 +40,70 @@
         }
         .brand-title {
             font-size: 24px;
-            font-weight: 300;
-            letter-spacing: 5px;
-            color: #1a1a1a;
+            font-weight: 600; 
+            letter-spacing: 4px;
+            color: #000000;
             margin: 0;
             text-transform: uppercase;
         }
         .brand-subtitle {
             font-size: 14px;
-            font-weight: 600;
+            font-weight: 700;
             color: #e91e63;
             letter-spacing: 3px;
             margin-top: 5px;
         }
         .nom-tag {
-            font-size: 9px;
-            color: #999;
+            font-size: 10px;
+            font-weight: 600;
+            color: #555;
             letter-spacing: 2px;
             margin-top: 15px;
         }
 
         /* Títulos de sección */
         h2 { 
-            font-size: 13px; 
-            font-weight: 600; 
+            font-size: 14px; 
+            font-weight: 700; 
             text-transform: uppercase; 
             letter-spacing: 2px; 
             color: #5d3a7d; 
-            border-bottom: 1px solid #eaeaea; 
+            border-bottom: 2px solid #eaeaea; 
             padding-bottom: 10px; 
             margin-top: 45px; 
             margin-bottom: 25px; 
         }
 
-        /* Inputs minimalistas */
+        /* Inputs */
         .input-group {
             margin-bottom: 20px;
             position: relative;
         }
         .input-group label {
             display: block;
-            font-size: 11px;
+            font-size: 12px;
+            font-weight: 600; 
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: #777;
+            color: #333333;
             margin-bottom: 5px;
         }
         .input-group input, .input-group textarea {
             width: 100%;
             border: none;
-            border-bottom: 1px solid #d4c5d9;
+            border-bottom: 2px solid #d4c5d9; 
             background: transparent;
             padding: 8px 0;
-            font-size: 15px;
-            color: #1a1a1a;
+            font-size: 16px;
+            font-weight: 600; 
+            color: #000000;
             font-family: 'Montserrat', sans-serif;
             transition: all 0.3s ease;
             border-radius: 0;
         }
         .input-group input:focus, .input-group textarea:focus {
             outline: none;
-            border-bottom: 1px solid #e91e63;
-            box-shadow: 0 4px 2px -2px rgba(233, 30, 99, 0.1);
+            border-bottom: 2px solid #e91e63;
         }
 
         /* Grid Layouts */
@@ -122,12 +125,12 @@
         .lux-check input { display: none; }
         .lux-check label {
             display: inline-block;
-            border: 1px solid #d4c5d9;
+            border: 2px solid #d4c5d9; 
             padding: 10px 18px;
             border-radius: 30px;
-            font-size: 12px;
-            color: #555;
-            font-weight: 500;
+            font-size: 13px;
+            color: #111111; 
+            font-weight: 600; 
             cursor: pointer;
             transition: all 0.3s ease;
             background: #fff;
@@ -144,13 +147,14 @@
             display: flex;
             align-items: flex-end;
             margin-bottom: 15px;
-            border-bottom: 1px solid #f0f0f0;
+            border-bottom: 1px solid #e0e0e0;
             padding-bottom: 5px;
         }
         .measure-box label {
             width: 50%;
-            font-size: 12px;
-            color: #555;
+            font-size: 13px;
+            font-weight: 600; 
+            color: #222222;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
@@ -158,62 +162,76 @@
             width: 35%;
             border: none;
             text-align: center;
-            font-size: 16px;
-            font-weight: 500;
+            font-size: 17px;
+            font-weight: 700; 
             background: transparent;
             color: #5d3a7d;
             outline: none;
         }
         .measure-box span {
             width: 15%;
-            font-size: 10px;
-            color: #aaa;
+            font-size: 11px;
+            font-weight: 600;
+            color: #777;
             text-align: right;
         }
 
         /* Alerta Contraindicaciones */
         .lux-alert {
             background: #fdf5f7;
-            border: 1px solid #fce4e9;
+            border: 2px solid #fce4e9;
             padding: 25px;
             border-radius: 8px;
             margin-top: 30px;
         }
         .lux-alert h2 { border: none; margin-top: 0; color: #d81b60; margin-bottom: 10px;}
-        .alert-msg { font-size: 11px; font-weight: 600; color: #d81b60; text-transform: uppercase; letter-spacing: 1px; margin-top: 20px; display: flex; align-items: center; gap: 8px;}
+        .alert-msg { font-size: 12px; font-weight: 700; color: #d81b60; text-transform: uppercase; letter-spacing: 1px; margin-top: 20px; display: flex; align-items: center; gap: 8px;}
 
         /* Políticas texto */
         .policy-text {
-            font-size: 12px;
-            color: #555;
+            font-size: 13px;
+            color: #222222;
             line-height: 1.8;
-            font-weight: 300;
+            font-weight: 500; 
         }
         .policy-text ul { padding-left: 15px; }
         .policy-text li { margin-bottom: 10px; }
-        .policy-highlight { font-weight: 600; color: #5d3a7d; }
+        .policy-highlight { font-weight: 700; color: #5d3a7d; }
+
+        /* Recuadro de notas de viaje/enfermedad */
+        .policy-note-box {
+            background: #eee8f0;
+            border-left: 4px solid #5d3a7d;
+            padding: 15px 20px;
+            border-radius: 4px;
+            margin-top: 15px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #444;
+        }
 
         /* Zona de Firma Estilo iPad */
         .signature-pad-wrapper {
             background: #fafafa;
-            border: 1px solid #eaeaea;
+            border: 2px solid #eaeaea;
             border-radius: 12px;
             padding: 20px;
             margin-top: 40px;
             text-align: center;
         }
         .signature-pad-wrapper h3 {
-            font-size: 12px;
+            font-size: 13px;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 2px;
-            color: #555;
+            color: #222222;
             margin-top: 0;
             margin-bottom: 20px;
         }
         .canvas-container {
             position: relative;
             background: #ffffff;
-            border: 2px dashed #d4c5d9;
+            border: 2px dashed #a08ba8;
             border-radius: 8px;
             margin-bottom: 15px;
             overflow: hidden;
@@ -225,19 +243,46 @@
             display: block;
         }
         .btn-clear {
-            background: #f0f0f0;
-            color: #555;
+            background: #e0e0e0;
+            color: #333;
             border: none;
             padding: 10px 20px;
             border-radius: 20px;
-            font-size: 11px;
+            font-size: 12px;
             text-transform: uppercase;
             letter-spacing: 1px;
             cursor: pointer;
-            font-weight: 600;
+            font-weight: 700;
             transition: 0.3s;
         }
-        .btn-clear:hover { background: #e0e0e0; }
+        .btn-clear:hover { background: #d0d0d0; }
+
+        /* Área exclusiva nutrióloga */
+        .nutriologa-area {
+            background-color: #fcfbfd;
+            border: 2px solid #5d3a7d;
+            border-radius: 16px;
+            padding: 35px 25px;
+            margin-top: 50px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(93, 58, 125, 0.05);
+        }
+        .nutriologa-badge {
+            background: #5d3a7d;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: absolute;
+            top: -18px;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+            box-shadow: 0 4px 10px rgba(93, 58, 125, 0.3);
+        }
 
         /* Botón Guardar */
         .btn-submit {
@@ -246,10 +291,10 @@
             border: none;
             width: 100%;
             padding: 20px;
-            font-size: 14px;
+            font-size: 15px;
             text-transform: uppercase;
             letter-spacing: 3px;
-            font-weight: 500;
+            font-weight: 600;
             border-radius: 8px;
             cursor: pointer;
             margin-top: 40px;
@@ -274,6 +319,7 @@
 
         <form action="/guardar" method="POST" id="formExpediente">
 
+            <!-- PARTE DEL CLIENTE -->
             <h2>I. Datos Generales</h2>
             <div class="grid-2">
                 <div class="input-group"><label>Fecha</label><input type="date" name="fecha"></div>
@@ -317,7 +363,7 @@
             <div class="input-group"><label>Otro / Especificar</label><input type="text" name="objetivo_otro"></div>
 
             <h2>IV. Hábitos de Salud</h2>
-            <label style="font-size: 11px; color:#888; text-transform:uppercase; letter-spacing:1px;">Consumo de Agua Diario</label>
+            <label style="font-size: 12px; font-weight: 600; color:#333; text-transform:uppercase; letter-spacing:1px; margin-bottom: 5px; display: block;">Consumo de Agua Diario</label>
             <div class="tag-container">
                 <div class="lux-check"><input type="radio" id="a_1" name="agua" value="Menos de 1 L"><label for="a_1">Menos de 1 L</label></div>
                 <div class="lux-check"><input type="radio" id="a_2" name="agua" value="1 - 2 L"><label for="a_2">1 - 2 L</label></div>
@@ -325,7 +371,7 @@
                 <div class="lux-check"><input type="radio" id="a_4" name="agua" value="Más de 3 L"><label for="a_4">Más de 3 L</label></div>
             </div>
 
-            <label style="font-size: 11px; color:#888; text-transform:uppercase; letter-spacing:1px;">Horas de Sueño</label>
+            <label style="font-size: 12px; font-weight: 600; color:#333; text-transform:uppercase; letter-spacing:1px; margin-bottom: 5px; display: block;">Horas de Sueño</label>
             <div class="tag-container">
                 <div class="lux-check"><input type="radio" id="s_1" name="sueno" value="Menos de 5"><label for="s_1">Menos de 5</label></div>
                 <div class="lux-check"><input type="radio" id="s_2" name="sueno" value="5 - 6"><label for="s_2">5 - 6</label></div>
@@ -333,7 +379,7 @@
                 <div class="lux-check"><input type="radio" id="s_4" name="sueno" value="Más de 8"><label for="s_4">Más de 8</label></div>
             </div>
 
-            <label style="font-size: 11px; color:#888; text-transform:uppercase; letter-spacing:1px;">Nivel de Estrés</label>
+            <label style="font-size: 12px; font-weight: 600; color:#333; text-transform:uppercase; letter-spacing:1px; margin-bottom: 5px; display: block;">Nivel de Estrés</label>
             <div class="tag-container">
                 <div class="lux-check"><input type="radio" id="e_1" name="estres" value="Bajo"><label for="e_1">Bajo</label></div>
                 <div class="lux-check"><input type="radio" id="e_2" name="estres" value="Medio"><label for="e_2">Medio</label></div>
@@ -342,14 +388,14 @@
 
             <div class="grid-2">
                 <div>
-                    <label style="font-size: 11px; color:#888; text-transform:uppercase; letter-spacing:1px;">Actividad Física</label>
+                    <label style="font-size: 12px; font-weight: 600; color:#333; text-transform:uppercase; letter-spacing:1px; margin-bottom: 5px; display: block;">Actividad Física</label>
                     <div class="tag-container">
                         <div class="lux-check"><input type="radio" id="af_si" name="actividad_fisica" value="Sí"><label for="af_si">Sí</label></div>
                         <div class="lux-check"><input type="radio" id="af_no" name="actividad_fisica" value="No"><label for="af_no">No</label></div>
                     </div>
                 </div>
                 <div>
-                    <label style="font-size: 11px; color:#888; text-transform:uppercase; letter-spacing:1px;">Días por semana</label>
+                    <label style="font-size: 12px; font-weight: 600; color:#333; text-transform:uppercase; letter-spacing:1px; margin-bottom: 5px; display: block;">Días por semana</label>
                     <div class="tag-container">
                         <div class="lux-check"><input type="radio" id="d_1" name="dias_actividad" value="1"><label for="d_1">1</label></div>
                         <div class="lux-check"><input type="radio" id="d_2" name="dias_actividad" value="2"><label for="d_2">2</label></div>
@@ -380,10 +426,10 @@
             <div class="input-group"><label>Alergias</label><input type="text" name="alergias"></div>
             <div class="input-group"><label>Observaciones Generales de Salud</label><textarea name="obs_salud" rows="2"></textarea></div>
 
-            <!-- CONTRAINDICACIONES (ALERTA PREMIUM) -->
+            <!-- CONTRAINDICACIONES -->
             <div class="lux-alert">
                 <h2>Contraindicaciones Clínicas</h2>
-                <p style="font-size: 12px; color: #666; margin-top: -15px; margin-bottom: 20px;">Marque si el paciente presenta alguna de las siguientes condiciones:</p>
+                <p style="font-size: 13px; font-weight: 500; color: #444; margin-top: -15px; margin-bottom: 20px;">Marque si el paciente presenta alguna de las siguientes condiciones:</p>
                 <div class="tag-container" style="margin-bottom: 0;">
                     <div class="lux-check"><input type="checkbox" id="ct_1" name="contraindicaciones" value="Embarazo"><label for="ct_1">Embarazo</label></div>
                     <div class="lux-check"><input type="checkbox" id="ct_2" name="contraindicaciones" value="Fiebre"><label for="ct_2">Fiebre</label></div>
@@ -402,75 +448,40 @@
                 </div>
             </div>
 
-            <h2>VI. Mediciones Corporales</h2>
-            <div class="grid-2">
-                <div>
-                    <div class="measure-box"><label>Peso</label><input type="number" step="0.1" name="peso"><span>kg</span></div>
-                    <div class="measure-box"><label>Estatura</label><input type="number" step="0.1" name="estatura"><span>cm</span></div>
-                    <div class="measure-box"><label>IMC</label><input type="text" name="imc"><span></span></div>
-                    <div class="measure-box"><label>% Grasa</label><input type="text" name="grasa"><span>%</span></div>
-                    <div class="measure-box"><label>% Masa Muscular</label><input type="text" name="masa_muscular"><span>%</span></div>
-                    <div class="measure-box"><label>Grasa Visceral</label><input type="text" name="grasa_visceral"><span></span></div>
-                    <div class="measure-box"><label>Edad Metabólica</label><input type="number" name="edad_metabolica"><span></span></div>
-                </div>
-                <div>
-                    <div class="measure-box"><label>Cintura</label><input type="number" step="0.1" name="cintura"><span>cm</span></div>
-                    <div class="measure-box"><label>Abdomen</label><input type="number" step="0.1" name="abdomen"><span>cm</span></div>
-                    <div class="measure-box"><label>Cadera</label><input type="number" step="0.1" name="cadera"><span>cm</span></div>
-                    <div class="measure-box"><label>Brazo</label><input type="number" step="0.1" name="brazo"><span>cm</span></div>
-                    <div class="measure-box"><label>Muslo</label><input type="number" step="0.1" name="muslo"><span>cm</span></div>
-                    <div class="measure-box"><label>Pantorrilla</label><input type="number" step="0.1" name="pantorrilla"><span>cm</span></div>
-                </div>
-            </div>
-            <div class="input-group" style="margin-top: 15px;"><label>Observaciones Físicas</label><textarea name="obs_mediciones" rows="2"></textarea></div>
-
-            <h2>VII. Plan y Tratamiento</h2>
-            <div class="input-group"><label>Motivo de Consulta</label><input type="text" name="motivo"></div>
-            <div class="input-group"><label>Diagnóstico Funcional</label><textarea name="diagnostico" rows="2"></textarea></div>
-            <div class="input-group"><label>Objetivos Terapéuticos</label><textarea name="objetivos_terapeuticos" rows="2"></textarea></div>
-            
-            <label style="font-size: 11px; color:#888; text-transform:uppercase; letter-spacing:1px;">Plan de Tratamiento Seleccionado</label>
-            <div class="tag-container">
-                <div class="lux-check"><input type="checkbox" id="tr_1" name="tratamiento" value="Vacucycle"><label for="tr_1">Vacucycle</label></div>
-                <div class="lux-check"><input type="checkbox" id="tr_2" name="tratamiento" value="Vacutherm"><label for="tr_2">Vacutherm</label></div>
-                <div class="lux-check"><input type="checkbox" id="tr_3" name="tratamiento" value="Slim Roller"><label for="tr_3">Slim Roller</label></div>
-                <div class="lux-check"><input type="checkbox" id="tr_4" name="tratamiento" value="Combinación"><label for="tr_4">Combinación Tecnologías</label></div>
-            </div>
-            
-            <div class="grid-3">
-                <div class="input-group"><label>Frecuencia Semanal</label><input type="text" name="frecuencia" placeholder="Ej. 3 sesiones"></div>
-                <div class="input-group"><label>Duración</label><input type="text" name="duracion" placeholder="Ej. 30 min"></div>
-                <div class="input-group"><label>Total Sesiones</label><input type="number" name="num_sesiones"></div>
-            </div>
-            <div class="input-group"><label>Notas de Tratamiento</label><textarea name="obs_valoracion" rows="2"></textarea></div>
-
-            <h2>VIII. Políticas y Consentimiento</h2>
+            <!-- POLÍTICAS Y AVISO DE PRIVACIDAD -->
+            <h2>VI. Políticas de Reservas y Cancelaciones</h2>
             <div class="policy-text">
-                <p class="policy-highlight">Consentimiento Informado</p>
+                <p class="policy-highlight">1) Cancelaciones y cambios:</p>
                 <ul>
-                    <li>Declaro que la información proporcionada es verdadera y me comprometo a informar cualquier cambio de salud.</li>
-                    <li>Comprendo que los resultados dependen de la alimentación, ejercicio, descanso y constancia.</li>
-                    <li>Acepto que el resultado físico varía según la persona. Se pedirá autorización antes de generar cualquier contenido multimedia para garantizar mi comodidad.</li>
+                    <li>Deben realizarse con al menos 12 horas de anticipación.</li>
+                    <li>Cancelaciones con menos de 12 horas se consideran como sesiones utilizadas y no son reembolsables ni reprogramables.</li>
+                    <li>Las cancelaciones se deben realizar a través de WhatsApp o directamente en recepción.</li>
                 </ul>
-                <p class="policy-highlight">Experiencia Sveltta (Reglas)</p>
+                <p class="policy-highlight">2) Llegadas y retrasos:</p>
                 <ul>
-                    <li>Reserva previa obligatoria para el uso de cualquier equipo.</li>
-                    <li>Para <b>Vacucycle</b> se requiere toalla grande que cubra la espalda (obligatorio para el uso).</li>
-                    <li>Para <b>Vacutherm</b> es obligatorio el uso de faja personal.</li>
-                    <li>Acudir con ropa deportiva y calzado óptimo, hidratada y con ingesta de alimentos 30 min antes.</li>
+                    <li>Se recomienda llegar con al menos 10 minutos de anticipación.</li>
+                    <li>Si se llega dentro de los primeros 10 minutos de la sesión, esos minutos se recortan de la sesión.</li>
+                    <li>Retrasos mayores a 10 minutos implican que ya no se podrá dar acceso a la sesión, y esta no podrá ser reprogramada.</li>
                 </ul>
-                <p class="policy-highlight">Reservas y Cancelaciones</p>
+                <p class="policy-highlight">3) Uso de sesiones y membresías:</p>
                 <ul>
-                    <li>Cambios o cancelaciones con <b>12 horas de anticipación</b>. Menos tiempo se considera sesión utilizada.</li>
-                    <li>Retrasos de hasta 10 minutos se recortan del tiempo de sesión. Más de 10 minutos impide el acceso sin reprogramación.</li>
-                    <li>Vigencia de 30 días (45 días para Premium/Plus). Intransferibles. No hay reembolsos.</li>
+                    <li>La reserva de equipos y citas es personal e intransferible.</li>
+                    <li>No se aceptan reembolsos de pases diarios o membresías una vez realizadas.</li>
+                    <li>Todas las membresías y pases tienen una vigencia de 30 días a partir de la compra, a excepción de las membresías PREMIUM y PLUS, que cuentan con una vigencia de 45 días.</li>
+                    <li>En la compra de una nueva membresía, se reactivan las sesiones no utilizadas de la membresía anterior.</li>
                 </ul>
+                
+                <!-- NOTAS RESALTADAS DE ENFERMEDAD Y VIAJE -->
+                <div class="policy-note-box">
+                    <p style="margin-top: 0; margin-bottom: 10px;">En caso de enfermedad o reposo por lesiones, se podrá brindar una extensión de las horas en la membresía activa.</p>
+                    <p style="margin-bottom: 0;">En caso de viaje, se podrá suspender temporalmente la membresía activa.</p>
+                </div>
             </div>
 
-            <div style="background: #fafafa; padding: 20px; border-radius: 8px; margin-top: 20px; font-size: 11px; color: #777; line-height: 1.6;">
+            <div style="background: #fafafa; padding: 20px; border-radius: 8px; margin-top: 30px; font-size: 12px; color: #333; line-height: 1.6; font-weight: 500;">
                 <b style="color: #5d3a7d;">Aviso de Privacidad:</b> SVELTTA VACU CENTER protegerá los datos recabados en este expediente conforme a la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (NOM-004-SSA3-2012).
                 
-                <p style="margin-top: 15px; color: #1a1a1a; font-weight: 600;">Autorización de uso de imagen (Fotos/Videos):</p>
+                <p style="margin-top: 15px; color: #1a1a1a; font-weight: 700;">Autorización de uso de imagen (Fotos/Videos):</p>
                 <div class="tag-container" style="margin-bottom: 0;">
                     <div class="lux-check"><input type="radio" id="img_1" name="uso_imagen" value="Solo expediente"><label for="img_1">Solo uso clínico</label></div>
                     <div class="lux-check"><input type="radio" id="img_2" name="uso_imagen" value="Publicitario"><label for="img_2">Autorizo publicidad</label></div>
@@ -478,21 +489,19 @@
                 </div>
             </div>
 
-            <!-- ==========================================
-                 LA NUEVA ZONA DE FIRMA (PRO/TABLET)
-                 ========================================== -->
+            <!-- ZONA DE FIRMA DE LA CLIENTA -->
             <div class="signature-pad-wrapper">
                 <h3>Firma Electrónica de Conformidad</h3>
                 <div class="grid-2" style="margin-bottom: 15px;">
                     <div class="input-group" style="margin-bottom: 0;">
-                        <input type="text" name="nombre_firma" placeholder="Nombre completo" required style="text-align: center; border-bottom: 2px solid #5d3a7d; font-weight: 600;">
+                        <input type="text" name="nombre_firma" placeholder="Nombre completo de la clienta" required style="text-align: center; border-bottom: 2px solid #5d3a7d; font-weight: 700;">
                     </div>
                     <div class="input-group" style="margin-bottom: 0;">
-                        <input type="date" name="fecha_firma" required style="text-align: center; border-bottom: 2px solid #5d3a7d; font-weight: 600;">
+                        <input type="date" name="fecha_firma" required style="text-align: center; border-bottom: 2px solid #5d3a7d; font-weight: 700;">
                     </div>
                 </div>
 
-                <p style="font-size: 11px; color: #888; text-transform: uppercase; margin-bottom: 10px;">Por favor, firme en el recuadro inferior:</p>
+                <p style="font-size: 11px; font-weight: 600; color: #555; text-transform: uppercase; margin-bottom: 10px;">Por favor, firme en el recuadro inferior:</p>
                 
                 <div class="canvas-container">
                     <canvas id="pizarraFirma"></canvas>
@@ -502,12 +511,61 @@
                 <input type="hidden" name="firma" id="inputFirma">
             </div>
 
+            <!-- ==========================================
+                 ÁREA DE USO EXCLUSIVO NUTRIÓLOGA
+                 ========================================== -->
+            <div class="nutriologa-area">
+                <div class="nutriologa-badge">Área de Uso Exclusivo Nutrióloga</div>
+                
+                <h2>VII. Mediciones Corporales</h2>
+                <div class="grid-2">
+                    <div>
+                        <div class="measure-box"><label>Peso</label><input type="number" step="0.1" name="peso"><span>kg</span></div>
+                        <div class="measure-box"><label>Estatura</label><input type="number" step="0.1" name="estatura"><span>cm</span></div>
+                        <div class="measure-box"><label>IMC</label><input type="text" name="imc"><span></span></div>
+                        <div class="measure-box"><label>% Grasa</label><input type="text" name="grasa"><span>%</span></div>
+                        <div class="measure-box"><label>% Masa Muscular</label><input type="text" name="masa_muscular"><span>%</span></div>
+                        <div class="measure-box"><label>Grasa Visceral</label><input type="text" name="grasa_visceral"><span></span></div>
+                        <div class="measure-box"><label>Edad Metabólica</label><input type="number" name="edad_metabolica"><span></span></div>
+                    </div>
+                    <div>
+                        <div class="measure-box"><label>Cintura</label><input type="number" step="0.1" name="cintura"><span>cm</span></div>
+                        <div class="measure-box"><label>Abdomen</label><input type="number" step="0.1" name="abdomen"><span>cm</span></div>
+                        <div class="measure-box"><label>Cadera</label><input type="number" step="0.1" name="cadera"><span>cm</span></div>
+                        <div class="measure-box"><label>Brazo</label><input type="number" step="0.1" name="brazo"><span>cm</span></div>
+                        <div class="measure-box"><label>Muslo</label><input type="number" step="0.1" name="muslo"><span>cm</span></div>
+                        <div class="measure-box"><label>Pantorrilla</label><input type="number" step="0.1" name="pantorrilla"><span>cm</span></div>
+                    </div>
+                </div>
+                <div class="input-group" style="margin-top: 15px;"><label>Observaciones Físicas</label><textarea name="obs_mediciones" rows="2"></textarea></div>
+
+                <h2>VIII. Plan y Tratamiento</h2>
+                <div class="input-group"><label>Motivo de Consulta</label><input type="text" name="motivo"></div>
+                <div class="input-group"><label>Diagnóstico Funcional</label><textarea name="diagnostico" rows="2"></textarea></div>
+                <div class="input-group"><label>Objetivos Terapéuticos</label><textarea name="objetivos_terapeuticos" rows="2"></textarea></div>
+                
+                <label style="font-size: 12px; font-weight: 600; color:#333; text-transform:uppercase; letter-spacing:1px; margin-bottom: 5px; display: block;">Plan de Tratamiento Seleccionado</label>
+                <div class="tag-container">
+                    <div class="lux-check"><input type="checkbox" id="tr_1" name="tratamiento" value="Vacucycle"><label for="tr_1">Vacucycle</label></div>
+                    <div class="lux-check"><input type="checkbox" id="tr_2" name="tratamiento" value="Vacutherm"><label for="tr_2">Vacutherm</label></div>
+                    <div class="lux-check"><input type="checkbox" id="tr_3" name="tratamiento" value="Slim Roller"><label for="tr_3">Slim Roller</label></div>
+                    <div class="lux-check"><input type="checkbox" id="tr_4" name="tratamiento" value="Combinación"><label for="tr_4">Combinación Tecnologías</label></div>
+                </div>
+                
+                <div class="grid-3">
+                    <div class="input-group"><label>Frecuencia Semanal</label><input type="text" name="frecuencia" placeholder="Ej. 3 sesiones"></div>
+                    <div class="input-group"><label>Duración</label><input type="text" name="duracion" placeholder="Ej. 30 min"></div>
+                    <div class="input-group"><label>Total Sesiones</label><input type="number" name="num_sesiones"></div>
+                </div>
+                <div class="input-group"><label>Notas de Tratamiento</label><textarea name="obs_valoracion" rows="2"></textarea></div>
+            </div>
+
             <!-- Botón Final -->
             <button type="submit" class="btn-submit">Guardar Expediente Oficial</button>
         </form>
     </div>
 
-    <!-- SCRIPT DE FIRMA MEJORADO PARA PANTALLAS TÁCTILES -->
+    <!-- SCRIPT DE FIRMA -->
     <script>
         const canvas = document.getElementById('pizarraFirma');
         const ctx = canvas.getContext('2d');
