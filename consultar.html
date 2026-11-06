@@ -28,8 +28,8 @@
         .info-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px 15px; font-size: 13px; margin-bottom: 15px; }
         .info-item span { font-weight: 600; color: #444; }
         
-        .tags-view { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 15px; }
-        .tag-badge { background: #eee8f0; color: #5d3a7d; padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; }
+        .btn-edit { background: #e91e63; color: white; border: none; padding: 8px 15px; border-radius: 6px; font-size: 11px; font-weight: 700; text-transform: uppercase; cursor: pointer; letter-spacing: 1px; margin-top: 15px; transition: 0.3s; }
+        .btn-edit:hover { background: #d81b60; }
 
         .firma-preview { margin-top: 20px; text-align: center; background: #fff; padding: 15px; border-radius: 6px; border: 1px dashed #ccc; }
         .firma-preview img { max-height: 90px; display: block; margin: auto; }
@@ -48,7 +48,7 @@
         </div>
         
         <div class="brand-header">
-            <h1 class="brand-title">Consulta Completa</h1>
+            <h1 class="brand-title">Consulta y Edición</h1>
             <div class="brand-subtitle">SVELTTA VACU CENTER</div>
         </div>
 
@@ -58,11 +58,13 @@
         </div>
 
         <div id="resultadosContainer">
-            <p style="text-align: center; color: #777; font-size: 13px;">Escribe un nombre arriba y presiona buscar para ver el expediente detallado.</p>
+            <p style="text-align: center; color: #777; font-size: 13px;">Escribe un nombre arriba y presiona buscar para consultar o editar el expediente.</p>
         </div>
     </div>
 
     <script>
+        let expedientesCache = [];
+
         async function buscarExpedientes() {
             const query = document.getElementById('searchInput').value;
             const container = document.getElementById('resultadosContainer');
@@ -71,16 +73,15 @@
             
             try {
                 const response = await fetch(`/api/buscar-expedientes?q=${encodeURIComponent(query)}`);
-                const expedientes = await response.json();
+                expedientesCache = await response.json();
                 
-                if (expedientes.length === 0) {
+                if (expedientesCache.length === 0) {
                     container.innerHTML = '<p style="text-align: center; color: #777;">No se encontraron expedientes con ese nombre.</p>';
                     return;
                 }
                 
                 let html = '';
-                expedientes.forEach(exp => {
-                    // Formatear checkboxes o arrays si vienen guardados
+                expedientesCache.forEach((exp, index) => {
                     const objetivosStr = Array.isArray(exp.objetivos) ? exp.objetivos.join(', ') : (exp.objetivos || 'N/D');
                     const antecedentesStr = Array.isArray(exp.antecedentes) ? exp.antecedentes.join(', ') : (exp.antecedentes || 'Ninguno');
                     const contraStr = Array.isArray(exp.contraindicaciones) ? exp.contraindicaciones.join(', ') : (exp.contraindicaciones || 'Ninguna');
@@ -101,59 +102,33 @@
                                 <div class="info-item"><span>Teléfono:</span> ${exp.telefono || 'N/D'}</div>
                                 <div class="info-item"><span>Correo:</span> ${exp.correo || 'N/D'}</div>
                                 <div class="info-item"><span>Ocupación:</span> ${exp.ocupacion || 'N/D'}</div>
-                                <div class="info-item"><span>Emergencia:</span> ${exp.contacto_emergencia || 'N/D'} (${exp.tel_emergencia || 'N/D'})</div>
                             </div>
 
-                            <h3>II. Objetivos y Hábitos</h3>
-                            <div class="info-grid">
-                                <div class="info-item"><span>Objetivos:</span> ${objetivosStr}</div>
-                                <div class="info-item"><span>Consumo Agua:</span> ${exp.agua || 'N/D'}</div>
-                                <div class="info-item"><span>Horas Sueño:</span> ${exp.sueno || 'N/D'}</div>
-                                <div class="info-item"><span>Nivel Estrés:</span> ${exp.estres || 'N/D'}</div>
-                                <div class="info-item"><span>Actividad Física:</span> ${exp.actividad_fisica || 'N/D'} (${exp.dias_actividad || '0'} días - ${exp.tipo_actividad || 'N/D'})</div>
-                            </div>
-
-                            <h3>III. Antecedentes y Salud</h3>
-                            <div class="info-grid">
-                                <div class="info-item"><span>Antecedentes:</span> ${antecedentesStr}</div>
-                                <div class="info-item"><span>Contraindicaciones:</span> ${contraStr}</div>
-                                <div class="info-item"><span>Medicamentos:</span> ${exp.medicamentos || 'Ninguno'}</div>
-                                <div class="info-item"><span>Alergias:</span> ${exp.alergias || 'Ninguna'}</div>
-                            </div>
-                            ${exp.obs_salud ? `<div class="info-item" style="font-size:13px; margin-bottom:10px;"><span>Obs. Salud:</span> ${exp.obs_salud}</div>` : ''}
-
-                            <h3>IV. Área Exclusiva Nutrióloga (Mediciones)</h3>
+                            <h3>II. Área Nutriologa y Mediciones</h3>
                             <div class="info-grid-3">
                                 <div class="info-item"><span>Peso:</span> ${exp.peso ? exp.peso + ' kg' : 'N/D'}</div>
                                 <div class="info-item"><span>Estatura:</span> ${exp.estatura ? exp.estatura + ' cm' : 'N/D'}</div>
                                 <div class="info-item"><span>IMC:</span> ${exp.imc || 'N/D'}</div>
                                 <div class="info-item"><span>% Grasa:</span> ${exp.grasa || 'N/D'}</div>
-                                <div class="info-item"><span>% M. Muscular:</span> ${exp.masa_muscular || 'N/D'}</div>
-                                <div class="info-item"><span>Grasa Visceral:</span> ${exp.grasa_visceral || 'N/D'}</div>
-                                <div class="info-item"><span>Edad Metabólica:</span> ${exp.edad_metabolica || 'N/D'}</div>
                                 <div class="info-item"><span>Cintura:</span> ${exp.cintura ? exp.cintura + ' cm' : 'N/D'}</div>
                                 <div class="info-item"><span>Abdomen:</span> ${exp.abdomen ? exp.abdomen + ' cm' : 'N/D'}</div>
-                                <div class="info-item"><span>Cadera:</span> ${exp.cadera ? exp.cadera + ' cm' : 'N/D'}</div>
-                                <div class="info-item"><span>Brazo:</span> ${exp.brazo ? exp.brazo + ' cm' : 'N/D'}</div>
-                                <div class="info-item"><span>Muslo:</span> ${exp.muslo ? exp.muslo + ' cm' : 'N/D'}</div>
                             </div>
 
-                            <h3>V. Tratamiento y Plan</h3>
+                            <h3>III. Tratamiento y Notas</h3>
                             <div class="info-grid">
-                                <div class="info-item"><span>Motivo Consulta:</span> ${exp.motivo || 'N/D'}</div>
                                 <div class="info-item"><span>Tratamiento:</span> ${tratamientoStr}</div>
-                                <div class="info-item"><span>Frecuencia:</span> ${exp.frecuencia || 'N/D'}</div>
                                 <div class="info-item"><span>Sesiones:</span> ${exp.num_sesiones || 'N/D'}</div>
                             </div>
                             ${exp.diagnostico ? `<div class="info-item" style="font-size:13px; margin-bottom:5px;"><span>Diagnóstico:</span> ${exp.diagnostico}</div>` : ''}
-                            ${exp.objetivos_terapeuticos ? `<div class="info-item" style="font-size:13px; margin-bottom:10px;"><span>Objetivos Terapéuticos:</span> ${exp.objetivos_terapeuticos}</div>` : ''}
 
                             ${exp.firma ? `
                                 <div class="firma-preview">
-                                    <img src="${exp.firma}" alt="Firma de la clienta">
+                                    <img src="${exp.firma}" alt="Firma">
                                     <p>Firma de Conformidad: ${exp.nombre_firma || exp.nombre}</p>
                                 </div>
                             ` : ''}
+
+                            <button class="btn-edit" onclick="cargarParaEditar(${index})">Modificar / Actualizar este Expediente</button>
                         </div>
                     `;
                 });
@@ -162,6 +137,14 @@
             } catch (err) {
                 container.innerHTML = '<p style="text-align: center; color: #d81b60;">Error al conectar con la base de datos.</p>';
             }
+        }
+
+        function cargarParaEditar(index) {
+            const exp = expedientesCache[index];
+            // Guardamos temporalmente en la memoria del navegador para pasarlo al formulario
+            localStorage.setItem('expedienteEditar', JSON.stringify(exp));
+            // Redirigimos al formulario principal
+            window.location.href = '/';
         }
 
         document.getElementById('searchInput').addEventListener('keypress', function(e) {
