@@ -6,7 +6,6 @@ const { MongoClient } = require('mongodb');
 const app = express();
 const puerto = process.env.PORT || 3000; 
 
-// Aumentamos el límite de tamaño para que acepte la firma sin reiniciarse
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ limit: '10mb', extended: true }));
 app.use(cors());
@@ -24,23 +23,27 @@ async function conectarDB() {
 }
 conectarDB();
 
+// Ruta para el formulario de registro
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'expediente.html'));
 });
 
+// Ruta para la pantalla de consulta de expedientes
+app.get('/consultar', (req, res) => {
+    res.sendFile(path.join(__dirname, 'consultar.html'));
+});
+
+// Guardar expediente
 app.post('/api/guardar-expediente', async (req, res) => {
     try {
         const datosPaciente = req.body;
-        
         const database = client.db("SvelttaDB");
         const expedientes = database.collection("expedientes");
         
-        const resultado = await expedientes.insertOne(datosPaciente);
+        // Agregamos fecha exacta de registro en el servidor
+        datosPaciente.fecha_registro = new Date();
         
-        console.log("-------------------------------------------------");
-        console.log("¡Éxito! Expediente guardado permanentemente en MongoDB.");
-        console.log("Paciente:", datosPaciente.nombre);
-        console.log("-------------------------------------------------");
+        await expedientes.insertOne(datosPaciente);
         
         res.json({ 
             estatus: "éxito", 
@@ -49,6 +52,25 @@ app.post('/api/guardar-expediente', async (req, res) => {
     } catch (error) {
         console.error("Error al guardar:", error);
         res.status(500).json({ estatus: "error", mensaje: "No se pudo guardar en la base de datos." });
+    }
+});
+
+// API para buscar expedientes por nombre
+app.get('/api/buscar-expedientes', async (req, res) => {
+    try {
+        const query = req.query.q || '';
+        const database = client.db("SvelttaDB");
+        const expedientes = database.collection("expedientes");
+        
+        // Busca coincidencias por nombre (sin importar mayúsculas/minúsculas)
+        const resultados = await expedientes.find({
+            nombre: { $regex: query, $options: 'i' }
+        }).sort({ _id: -1 }).limit(20).toArray();
+
+        res.json(resultados);
+    } catch (error) {
+        console.error("Error al buscar:", error);
+        res.status(500).json({ error: "Error al realizar la búsqueda" });
     }
 });
 
