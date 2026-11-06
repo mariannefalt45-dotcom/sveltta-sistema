@@ -23,12 +23,12 @@ async function conectarDB() {
 }
 conectarDB();
 
-// Ruta para el formulario de registro
+// Ruta para el formulario de registro (Página principal)
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'expediente.html'));
 });
 
-// Ruta para la pantalla de consulta de expedientes
+// Ruta para la pantalla de consulta y edición de expedientes
 app.get('/consultar', (req, res) => {
     res.sendFile(path.join(__dirname, 'consultar.html'));
 });
