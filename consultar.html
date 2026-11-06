@@ -7,7 +7,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
         body { font-family: 'Montserrat', sans-serif; background-color: #f4f2f5; color: #111111; padding: 20px 10px; margin: 0; }
-        .lux-container { max-width: 800px; margin: auto; background: #ffffff; padding: 40px 25px; border-radius: 16px; box-shadow: 0 20px 50px rgba(74, 46, 78, 0.08); }
+        .lux-container { max-width: 900px; margin: auto; background: #ffffff; padding: 40px 25px; border-radius: 16px; box-shadow: 0 20px 50px rgba(74, 46, 78, 0.08); }
         .brand-header { text-align: center; margin-bottom: 30px; }
         .brand-title { font-size: 22px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; margin: 0; }
         .brand-subtitle { font-size: 13px; font-weight: 700; color: #e91e63; letter-spacing: 3px; margin-top: 5px; }
@@ -17,17 +17,23 @@
         .search-box input:focus { border-color: #5d3a7d; }
         .search-box button { background: #5d3a7d; color: white; border: none; padding: 0 25px; border-radius: 8px; font-weight: 600; text-transform: uppercase; cursor: pointer; letter-spacing: 1px; }
         
-        .card-expediente { background: #fafafc; border: 1px solid #eae1ef; border-radius: 12px; padding: 20px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
-        .card-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #eee; padding-bottom: 10px; margin-bottom: 15px; }
-        .paciente-nombre { font-size: 16px; font-weight: 700; color: #5d3a7d; text-transform: uppercase; }
+        .card-expediente { background: #fafafc; border: 1px solid #eae1ef; border-radius: 12px; padding: 25px; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
+        .card-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #5d3a7d; padding-bottom: 10px; margin-bottom: 20px; }
+        .paciente-nombre { font-size: 18px; font-weight: 700; color: #5d3a7d; text-transform: uppercase; }
         .paciente-fecha { font-size: 12px; color: #666; font-weight: 600; }
         
-        .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 13px; margin-bottom: 15px; }
+        h3 { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #5d3a7d; margin-top: 20px; margin-bottom: 10px; border-bottom: 1px solid #ddd; padding-bottom: 5px; }
+        
+        .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 15px; font-size: 13px; margin-bottom: 15px; }
+        .info-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px 15px; font-size: 13px; margin-bottom: 15px; }
         .info-item span { font-weight: 600; color: #444; }
         
-        .firma-preview { margin-top: 15px; text-align: center; background: #fff; padding: 10px; border-radius: 6px; border: 1px dashed #ccc; }
-        .firma-preview img { max-height: 80px; display: block; margin: auto; }
-        .firma-preview p { font-size: 10px; color: #777; margin: 5px 0 0 0; text-transform: uppercase; letter-spacing: 1px; }
+        .tags-view { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 15px; }
+        .tag-badge { background: #eee8f0; color: #5d3a7d; padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; }
+
+        .firma-preview { margin-top: 20px; text-align: center; background: #fff; padding: 15px; border-radius: 6px; border: 1px dashed #ccc; }
+        .firma-preview img { max-height: 90px; display: block; margin: auto; }
+        .firma-preview p { font-size: 11px; color: #777; margin: 5px 0 0 0; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
         
         .nav-links { text-align: center; margin-bottom: 25px; }
         .nav-links a { color: #5d3a7d; text-decoration: none; font-weight: 600; font-size: 13px; letter-spacing: 1px; text-transform: uppercase; }
@@ -42,7 +48,7 @@
         </div>
         
         <div class="brand-header">
-            <h1 class="brand-title">Consulta de Expedientes</h1>
+            <h1 class="brand-title">Consulta Completa</h1>
             <div class="brand-subtitle">SVELTTA VACU CENTER</div>
         </div>
 
@@ -52,7 +58,7 @@
         </div>
 
         <div id="resultadosContainer">
-            <p style="text-align: center; color: #777; font-size: 13px;">Escribe un nombre arriba y presiona buscar para ver los expedientes registrados.</p>
+            <p style="text-align: center; color: #777; font-size: 13px;">Escribe un nombre arriba y presiona buscar para ver el expediente detallado.</p>
         </div>
     </div>
 
@@ -61,7 +67,7 @@
             const query = document.getElementById('searchInput').value;
             const container = document.getElementById('resultadosContainer');
             
-            container.innerHTML = '<p style="text-align: center; color: #5d3a7d; font-weight: 600;">Buscando expedientes...</p>';
+            container.innerHTML = '<p style="text-align: center; color: #5d3a7d; font-weight: 600;">Buscando expediente...</p>';
             
             try {
                 const response = await fetch(`/api/buscar-expedientes?q=${encodeURIComponent(query)}`);
@@ -74,24 +80,78 @@
                 
                 let html = '';
                 expedientes.forEach(exp => {
+                    // Formatear checkboxes o arrays si vienen guardados
+                    const objetivosStr = Array.isArray(exp.objetivos) ? exp.objetivos.join(', ') : (exp.objetivos || 'N/D');
+                    const antecedentesStr = Array.isArray(exp.antecedentes) ? exp.antecedentes.join(', ') : (exp.antecedentes || 'Ninguno');
+                    const contraStr = Array.isArray(exp.contraindicaciones) ? exp.contraindicaciones.join(', ') : (exp.contraindicaciones || 'Ninguna');
+                    const tratamientoStr = Array.isArray(exp.tratamiento) ? exp.tratamiento.join(', ') : (exp.tratamiento || 'N/D');
+
                     html += `
                         <div class="card-expediente">
                             <div class="card-header">
                                 <span class="paciente-nombre">${exp.nombre || 'Sin Nombre'}</span>
                                 <span class="paciente-fecha">Fecha: ${exp.fecha || 'No especificada'}</span>
                             </div>
+
+                            <h3>I. Datos Generales</h3>
                             <div class="info-grid">
-                                <div class="info-item"><span>Teléfono:</span> ${exp.telefono || 'N/D'}</div>
-                                <div class="info-item"><span>Edad:</span> ${exp.edad || 'N/D'} años</div>
-                                <div class="info-item"><span>Ocupación:</span> ${exp.ocupacion || 'N/D'}</div>
-                                <div class="info-item"><span>Tratamiento:</span> ${exp.tratamiento || 'N/D'}</div>
-                                <div class="info-item"><span>Peso inicial:</span> ${exp.peso ? exp.peso + ' kg' : 'N/D'}</div>
                                 <div class="info-item"><span>Asesora:</span> ${exp.asesora || 'N/D'}</div>
+                                <div class="info-item"><span>F. Nacimiento:</span> ${exp.fecha_nacimiento || 'N/D'}</div>
+                                <div class="info-item"><span>Edad:</span> ${exp.edad || 'N/D'} años</div>
+                                <div class="info-item"><span>Teléfono:</span> ${exp.telefono || 'N/D'}</div>
+                                <div class="info-item"><span>Correo:</span> ${exp.correo || 'N/D'}</div>
+                                <div class="info-item"><span>Ocupación:</span> ${exp.ocupacion || 'N/D'}</div>
+                                <div class="info-item"><span>Emergencia:</span> ${exp.contacto_emergencia || 'N/D'} (${exp.tel_emergencia || 'N/D'})</div>
                             </div>
+
+                            <h3>II. Objetivos y Hábitos</h3>
+                            <div class="info-grid">
+                                <div class="info-item"><span>Objetivos:</span> ${objetivosStr}</div>
+                                <div class="info-item"><span>Consumo Agua:</span> ${exp.agua || 'N/D'}</div>
+                                <div class="info-item"><span>Horas Sueño:</span> ${exp.sueno || 'N/D'}</div>
+                                <div class="info-item"><span>Nivel Estrés:</span> ${exp.estres || 'N/D'}</div>
+                                <div class="info-item"><span>Actividad Física:</span> ${exp.actividad_fisica || 'N/D'} (${exp.dias_actividad || '0'} días - ${exp.tipo_actividad || 'N/D'})</div>
+                            </div>
+
+                            <h3>III. Antecedentes y Salud</h3>
+                            <div class="info-grid">
+                                <div class="info-item"><span>Antecedentes:</span> ${antecedentesStr}</div>
+                                <div class="info-item"><span>Contraindicaciones:</span> ${contraStr}</div>
+                                <div class="info-item"><span>Medicamentos:</span> ${exp.medicamentos || 'Ninguno'}</div>
+                                <div class="info-item"><span>Alergias:</span> ${exp.alergias || 'Ninguna'}</div>
+                            </div>
+                            ${exp.obs_salud ? `<div class="info-item" style="font-size:13px; margin-bottom:10px;"><span>Obs. Salud:</span> ${exp.obs_salud}</div>` : ''}
+
+                            <h3>IV. Área Exclusiva Nutrióloga (Mediciones)</h3>
+                            <div class="info-grid-3">
+                                <div class="info-item"><span>Peso:</span> ${exp.peso ? exp.peso + ' kg' : 'N/D'}</div>
+                                <div class="info-item"><span>Estatura:</span> ${exp.estatura ? exp.estatura + ' cm' : 'N/D'}</div>
+                                <div class="info-item"><span>IMC:</span> ${exp.imc || 'N/D'}</div>
+                                <div class="info-item"><span>% Grasa:</span> ${exp.grasa || 'N/D'}</div>
+                                <div class="info-item"><span>% M. Muscular:</span> ${exp.masa_muscular || 'N/D'}</div>
+                                <div class="info-item"><span>Grasa Visceral:</span> ${exp.grasa_visceral || 'N/D'}</div>
+                                <div class="info-item"><span>Edad Metabólica:</span> ${exp.edad_metabolica || 'N/D'}</div>
+                                <div class="info-item"><span>Cintura:</span> ${exp.cintura ? exp.cintura + ' cm' : 'N/D'}</div>
+                                <div class="info-item"><span>Abdomen:</span> ${exp.abdomen ? exp.abdomen + ' cm' : 'N/D'}</div>
+                                <div class="info-item"><span>Cadera:</span> ${exp.cadera ? exp.cadera + ' cm' : 'N/D'}</div>
+                                <div class="info-item"><span>Brazo:</span> ${exp.brazo ? exp.brazo + ' cm' : 'N/D'}</div>
+                                <div class="info-item"><span>Muslo:</span> ${exp.muslo ? exp.muslo + ' cm' : 'N/D'}</div>
+                            </div>
+
+                            <h3>V. Tratamiento y Plan</h3>
+                            <div class="info-grid">
+                                <div class="info-item"><span>Motivo Consulta:</span> ${exp.motivo || 'N/D'}</div>
+                                <div class="info-item"><span>Tratamiento:</span> ${tratamientoStr}</div>
+                                <div class="info-item"><span>Frecuencia:</span> ${exp.frecuencia || 'N/D'}</div>
+                                <div class="info-item"><span>Sesiones:</span> ${exp.num_sesiones || 'N/D'}</div>
+                            </div>
+                            ${exp.diagnostico ? `<div class="info-item" style="font-size:13px; margin-bottom:5px;"><span>Diagnóstico:</span> ${exp.diagnostico}</div>` : ''}
+                            ${exp.objetivos_terapeuticos ? `<div class="info-item" style="font-size:13px; margin-bottom:10px;"><span>Objetivos Terapéuticos:</span> ${exp.objetivos_terapeuticos}</div>` : ''}
+
                             ${exp.firma ? `
                                 <div class="firma-preview">
                                     <img src="${exp.firma}" alt="Firma de la clienta">
-                                    <p>Firma Electrónica de: ${exp.nombre_firma || exp.nombre}</p>
+                                    <p>Firma de Conformidad: ${exp.nombre_firma || exp.nombre}</p>
                                 </div>
                             ` : ''}
                         </div>
@@ -104,7 +164,6 @@
             }
         }
 
-        // Permitir buscar presionando Enter
         document.getElementById('searchInput').addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
                 buscarExpedientes();
