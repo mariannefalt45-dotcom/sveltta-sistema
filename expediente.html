@@ -56,6 +56,22 @@
             margin-top: 15px;
         }
 
+        .consultar-link {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .consultar-link a {
+            color: #5d3a7d;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 13px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .consultar-link a:hover {
+            text-decoration: underline;
+        }
+
         h2 { 
             font-size: 14px; 
             font-weight: 700; 
@@ -294,6 +310,10 @@
 
     <div class="lux-container">
         
+        <div class="consultar-link">
+            <a href="/consultar">Ir al Panel de Consulta y Búsqueda &rarr;</a>
+        </div>
+
         <div class="brand-header">
             <h1 class="brand-title">Expediente Clínico</h1>
             <div class="brand-subtitle">SVELTTA VACU CENTER</div>
@@ -626,6 +646,25 @@
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
             } catch (err) {
                 alert("Error al conectar con el servidor.");
+            }
+        });
+
+        // Autocompletar formulario si se seleccionó editar desde consulta
+        window.addEventListener('DOMContentLoaded', () => {
+            const datosGuardados = localStorage.getItem('expedienteEditar');
+            if (datosGuardados) {
+                const exp = JSON.parse(datosGuardados);
+                for (const [key, value] of Object.entries(exp)) {
+                    const campo = document.querySelector(`[name="${key}"]`);
+                    if (campo) {
+                        if (campo.type === 'checkbox' || campo.type === 'radio') {
+                            if (campo.value === value) campo.checked = true;
+                        } else {
+                            campo.value = value;
+                        }
+                    }
+                }
+                localStorage.removeItem('expedienteEditar');
             }
         });
     </script>
