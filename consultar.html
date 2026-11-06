@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta de Expedientes | Sveltta Premium</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+        body { font-family: 'Montserrat', sans-serif; background-color: #f4f2f5; color: #111111; padding: 20px 10px; margin: 0; }
+        .lux-container { max-width: 800px; margin: auto; background: #ffffff; padding: 40px 25px; border-radius: 16px; box-shadow: 0 20px 50px rgba(74, 46, 78, 0.08); }
+        .brand-header { text-align: center; margin-bottom: 30px; }
+        .brand-title { font-size: 22px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; margin: 0; }
+        .brand-subtitle { font-size: 13px; font-weight: 700; color: #e91e63; letter-spacing: 3px; margin-top: 5px; }
+        
+        .search-box { display: flex; gap: 10px; margin-bottom: 30px; }
+        .search-box input { flex: 1; border: 2px solid #d4c5d9; padding: 12px 15px; border-radius: 8px; font-size: 15px; font-family: 'Montserrat', sans-serif; outline: none; }
+        .search-box input:focus { border-color: #5d3a7d; }
+        .search-box button { background: #5d3a7d; color: white; border: none; padding: 0 25px; border-radius: 8px; font-weight: 600; text-transform: uppercase; cursor: pointer; letter-spacing: 1px; }
+        
+        .card-expediente { background: #fafafc; border: 1px solid #eae1ef; border-radius: 12px; padding: 20px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
+        .card-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #eee; padding-bottom: 10px; margin-bottom: 15px; }
+        .paciente-nombre { font-size: 16px; font-weight: 700; color: #5d3a7d; text-transform: uppercase; }
+        .paciente-fecha { font-size: 12px; color: #666; font-weight: 600; }
+        
+        .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 13px; margin-bottom: 15px; }
+        .info-item span { font-weight: 600; color: #444; }
+        
+        .firma-preview { margin-top: 15px; text-align: center; background: #fff; padding: 10px; border-radius: 6px; border: 1px dashed #ccc; }
+        .firma-preview img { max-height: 80px; display: block; margin: auto; }
+        .firma-preview p { font-size: 10px; color: #777; margin: 5px 0 0 0; text-transform: uppercase; letter-spacing: 1px; }
+        
+        .nav-links { text-align: center; margin-bottom: 25px; }
+        .nav-links a { color: #5d3a7d; text-decoration: none; font-weight: 600; font-size: 13px; letter-spacing: 1px; text-transform: uppercase; }
+        .nav-links a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+    <div class="lux-container">
+        <div class="nav-links">
+            <a href="/">&larr; Ir al Formulario de Nuevo Expediente</a>
+        </div>
+        
+        <div class="brand-header">
+            <h1 class="brand-title">Consulta de Expedientes</h1>
+            <div class="brand-subtitle">SVELTTA VACU CENTER</div>
+        </div>
+
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Escribe el nombre de la clienta...">
+            <button onclick="buscarExpedientes()">Buscar</button>
+        </div>
+
+        <div id="resultadosContainer">
+            <p style="text-align: center; color: #777; font-size: 13px;">Escribe un nombre arriba y presiona buscar para ver los expedientes registrados.</p>
+        </div>
+    </div>
+
+    <script>
+        async function buscarExpedientes() {
+            const query = document.getElementById('searchInput').value;
+            const container = document.getElementById('resultadosContainer');
+            
+            container.innerHTML = '<p style="text-align: center; color: #5d3a7d; font-weight: 600;">Buscando expedientes...</p>';
+            
+            try {
+                const response = await fetch(`/api/buscar-expedientes?q=${encodeURIComponent(query)}`);
+                const expedientes = await response.json();
+                
+                if (expedientes.length === 0) {
+                    container.innerHTML = '<p style="text-align: center; color: #777;">No se encontraron expedientes con ese nombre.</p>';
+                    return;
+                }
+                
+                let html = '';
+                expedientes.forEach(exp => {
+                    html += `
+                        <div class="card-expediente">
+                            <div class="card-header">
+                                <span class="paciente-nombre">${exp.nombre || 'Sin Nombre'}</span>
+                                <span class="paciente-fecha">Fecha: ${exp.fecha || 'No especificada'}</span>
+                            </div>
+                            <div class="info-grid">
+                                <div class="info-item"><span>Teléfono:</span> ${exp.telefono || 'N/D'}</div>
+                                <div class="info-item"><span>Edad:</span> ${exp.edad || 'N/D'} años</div>
+                                <div class="info-item"><span>Ocupación:</span> ${exp.ocupacion || 'N/D'}</div>
+                                <div class="info-item"><span>Tratamiento:</span> ${exp.tratamiento || 'N/D'}</div>
+                                <div class="info-item"><span>Peso inicial:</span> ${exp.peso ? exp.peso + ' kg' : 'N/D'}</div>
+                                <div class="info-item"><span>Asesora:</span> ${exp.asesora || 'N/D'}</div>
+                            </div>
+                            ${exp.firma ? `
+                                <div class="firma-preview">
+                                    <img src="${exp.firma}" alt="Firma de la clienta">
+                                    <p>Firma Electrónica de: ${exp.nombre_firma || exp.nombre}</p>
+                                </div>
+                            ` : ''}
+                        </div>
+                    `;
+                });
+                
+                container.innerHTML = html;
+            } catch (err) {
+                container.innerHTML = '<p style="text-align: center; color: #d81b60;">Error al conectar con la base de datos.</p>';
+            }
+        }
+
+        // Permitir buscar presionando Enter
+        document.getElementById('searchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                buscarExpedientes();
+            }
+        });
+    </script>
+</body>
+</html>
